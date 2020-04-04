@@ -1,0 +1,10 @@
+Servo:
+MSE = 0.4632153
+Accuracy = 13.82%
+
+Motor:
+MSE = 0.0533431
+Accuracy = 49.37%
+
+
+Reinforcement Models
