@@ -28,7 +28,7 @@ from av_data_visualization import DataTest
 # Global Variables
 #------------------------------------------------------------------------------
 SETTINGS = 'data/set_visual.json'
-IMAGE_LIST = 'data/list/list_0000_00.csv'
+IMAGE_LIST = 'data/list/test.csv'
 QUIT_KEY = ord('q')
 
 
@@ -60,8 +60,13 @@ def main():
 
         # stops the program when 'q' is pressed
         if (key == QUIT_KEY):
+            
+            # close wondow
             cv2.destroyAllWindows()
             break
+        
+        # close wondow
+        cv2.destroyAllWindows()
 
 #------------------------------------------------------------------------------
 # Driver Program

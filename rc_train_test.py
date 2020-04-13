@@ -27,7 +27,7 @@ TEST_DATA = 'data/list/03_09_2020_1_output_0013_01.csv'
 
 SERVO_TRAIN_SETTING = "data/set_servo_train.json"
 SERVO_TEST_SETTING = "data/set_servo_test.json"
-SERVO_MODEL = 'models/servo_model.pth'
+SERVO_MODEL = 'models/servo_model_drop.pth'
 
 MOTOR_TRAIN_SETTING = "data/set_motor_train.json"
 MOTOR_TEST_SETTING = "data/set_motor_test.json"
@@ -50,9 +50,9 @@ IMAGE_FILE = "data/images/03_06_2020_0/output_0002/i0000000_s15_m15.jpg"
 def main():
     
     # servo training session
-    # servo_train = NNTools(SERVO_TRAIN_SETTING)
-    # servo_train.train(TRAIN_DATA)
-    # servo_train.save_model(SERVO_MODEL)
+    servo_train = NNTools(SERVO_TRAIN_SETTING)
+    servo_train.train(TRAIN_DATA)
+    servo_train.save_model(SERVO_MODEL)
     
     # # servo testing session
     # servo_test = NNTools(SERVO_TEST_SETTING)
@@ -70,9 +70,9 @@ def main():
     # motor_train.save_model(MOTOR_MODEL)
     
     # # motor testing session
-    motor_test = NNTools(MOTOR_TEST_SETTING)
-    motor_test.load_model(MOTOR_MODEL)
-    motor_test.test(TEST_DATA)
+    # motor_test = NNTools(MOTOR_TEST_SETTING)
+    # motor_test.load_model(MOTOR_MODEL)
+    # motor_test.test(TEST_DATA)
     
     # # test on single file
     # motor_pred = NNTools(MOTOR_TEST_SETTING)

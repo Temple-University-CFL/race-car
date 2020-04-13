@@ -1,0 +1,11 @@
+{
+    "_": "shape of the image [width, height]",
+    "shape": [640, 320],
+    "depth": 3,
+    
+    "servo_setting": "data/set_servo_test.json",
+    "motor_setting": "data/set_servo_test.json",
+    
+    "servo_model": "models/servo_model_drop.pth",
+    "motor_model": "models/motor_model.pth"
+}

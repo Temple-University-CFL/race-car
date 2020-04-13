@@ -6,7 +6,7 @@ from av_parse_data import ParseData
 
 
 TEST_LIST = "data/list/test.csv"
-SETTINGS = "data/set_visual.json"
+SETTINGS = "data/set_accuracy_test.json"
 
 
 data = pd.read_csv(TEST_LIST)
@@ -32,6 +32,9 @@ for index in range(len(data)):
     if abs(servo - pred_servo) <= 1:
         # print(servo)
         servo_count += 1
+    # if (servo-15)*(pred_servo-15) >= 0:
+    #     # print(servo)
+    #     servo_count += 1
     
     if abs(motor - pred_motor) <= 1:
         # print(motor)

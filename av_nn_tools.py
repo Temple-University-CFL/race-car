@@ -314,10 +314,10 @@ class NNTools:
         # return prediction
         if (self.cuda):
             image = Variable(image.cuda(non_blocking=True))
-            return model(image).int().data.cpu().numpy()[0][0]
+            return model(image).round().int().data.cpu().numpy()[0][0]
         else:
             image = Variable(image)
-            return model(image).int().data.numpy()[0][0]
+            return model(image).round().int().data.numpy()[0][0]
     #
     # end of method
     

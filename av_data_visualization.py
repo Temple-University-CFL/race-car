@@ -111,6 +111,7 @@ class DataTest:
         # show image
         cv2.imshow('picture {}'.format(index), cv2.cvtColor(image, \
                                    cv2.COLOR_RGB2BGR))
+        cv2.moveWindow('picture {}'.format(index), 500,500)
 
         return None
     #
@@ -138,9 +139,8 @@ class DataTest:
             self.badindex.append(index-1)
             cv2.destroyWindow('picture {}'.format(index-1))
         elif (key == SAVE_KEY):
-            asdata = self.data[0:index]
-            asd = asdata.drop(self.badindex)
-            asd.to_csv(nfile,  index=False)
+            ref_data = self.data[0:index].drop(self.badindex)
+            ref_data.to_csv(nfile, index=False)
         else:
             cv2.destroyWindow('picture {}'.format(index-1))
 
@@ -152,13 +152,14 @@ class DataTest:
                            interpolation=cv2.INTER_CUBIC)
         cv2.line(image, (240, 300), (240 - 20*(15 - servo), 200), \
                              (255, 0, 0), 3)
-        cv2.imshow('picture {}'.format(index), cv2.cvtColor(image, \
-                               cv2.COLOR_RGB2BGR))
-        
-        # show image
         image = cv2.putText(image, str(motor), (180, 310),  \
                                   cv2.FONT_HERSHEY_SIMPLEX, \
                                      1, (255,255,255), 2, cv2.LINE_AA)
+        
+        # show image
+        cv2.imshow('picture {}'.format(index), cv2.cvtColor(image, \
+                               cv2.COLOR_RGB2BGR))
+        cv2.moveWindow('picture {}'.format(index), 500,500)
 
         return None
     #

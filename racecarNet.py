@@ -24,8 +24,8 @@ import numpy as np
 #
 import torch
 from torch.nn import Module
-from torch.nn import Conv2d, Linear
-from torch.nn.functional import elu
+from torch.nn import Conv2d, Linear, Dropout
+from torch.nn.functional import elu, relu
 
 #------------------------------------------------------------------------------
 # Global Variables
@@ -60,6 +60,7 @@ class ServoNet(Module):
         self.conv3 = Conv2d(36, 48, 3)
         self.conv4 = Conv2d(48, 64, 3)
         self.conv5 = Conv2d(64, 10, 3)
+        self.drop = Dropout(p=0.25)
         self.fc1 = Linear(self.flatsize, 10)
         self.fc2 = Linear(10, 1)
         
@@ -84,6 +85,7 @@ class ServoNet(Module):
         x = elu(self.conv3(x))
         x = elu(self.conv4(x))
         x = elu(self.conv5(x))
+        x = self.drop(x)
         x = x.view(-1, self.flatsize)
         x = elu(self.fc1(x))
         x = elu(self.fc2(x))

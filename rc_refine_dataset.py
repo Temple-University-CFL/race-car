@@ -29,8 +29,8 @@ from av_data_visualization import DataTest
 #------------------------------------------------------------------------------
 QUIT_KEY = ord('q')
 SAVE_KEY = ord('s')
-IMG_FILE = 'data/list/03_09_2020_1_output_0013_01.csv'
-REFINED_FILE = 'data/list/train.csv'
+IMG_FILE = 'data/list/check.csv'
+REFINED_FILE = 'data/list/train_01.csv'
 
 #------------------------------------------------------------------------------
 # Main Method
@@ -58,6 +58,12 @@ def main():
         # sets waitkey for cv2.imshow()
         # waits for key press to show next image
         key = cv2.waitKey(0) & 0xFF
+        
+        # stops the program and saves data when list ends
+        if index == cardata.len-1:
+            cardata.display(nfile=REFINED_FILE, index=index, key=SAVE_KEY)
+            cv2.destroyAllWindows()
+            break
 
         # stops the program when 'q' is pressed
         # saves data when 's' is pressed
