@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from av_parse_data import ParseData
 
-LIST_FILE = "data/list/all.csv"
+LIST_FILE = "data/list/train.csv"
 
 
 #------------------------------------------------------------------------------

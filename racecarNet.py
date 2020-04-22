@@ -60,7 +60,7 @@ class ServoNet(Module):
         self.conv3 = Conv2d(36, 48, 3)
         self.conv4 = Conv2d(48, 64, 3)
         self.conv5 = Conv2d(64, 10, 3)
-        self.drop = Dropout(p=0.25)
+        self.drop = Dropout(0.25)
         self.fc1 = Linear(self.flatsize, 10)
         self.fc2 = Linear(10, 1)
         

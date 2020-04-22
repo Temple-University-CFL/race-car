@@ -5,7 +5,7 @@
     "shape": [100, 100],
     
     "batch_size": 1,
-    "epochs": 15,
+    "epochs": 100,
     
 	"cuda": true,
 	"optimizer": "adam",

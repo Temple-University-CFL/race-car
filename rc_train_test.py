@@ -23,11 +23,11 @@ from av_nn_tools import NNTools
 # Global Variables
 #------------------------------------------------------------------------------
 TRAIN_DATA = 'data/list/train.csv'
-TEST_DATA = 'data/list/03_09_2020_1_output_0013_01.csv'
+TEST_DATA = 'data/list/test.csv'
 
 SERVO_TRAIN_SETTING = "data/set_servo_train.json"
 SERVO_TEST_SETTING = "data/set_servo_test.json"
-SERVO_MODEL = 'models/servo_model_drop.pth'
+SERVO_MODEL = 'models/servo_model.pth'
 
 MOTOR_TRAIN_SETTING = "data/set_motor_train.json"
 MOTOR_TEST_SETTING = "data/set_motor_test.json"

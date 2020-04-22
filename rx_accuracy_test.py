@@ -30,14 +30,14 @@ for index in range(len(data)):
     pred_motor =  motor_pred.predict(data["image"][index])
     
     if abs(servo - pred_servo) <= 1:
-        # print(servo)
         servo_count += 1
-    # if (servo-15)*(pred_servo-15) >= 0:
-    #     # print(servo)
+    # if servo == 15:
+    #     if servo - pred_servo == 0:
+    #         servo_count += 1
+    # elif (servo-15)*(pred_servo-15) > 0:
     #     servo_count += 1
     
     if abs(motor - pred_motor) <= 1:
-        # print(motor)
         motor_count += 1
     
     if (index+1)%100 == 0:

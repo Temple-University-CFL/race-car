@@ -30,7 +30,7 @@ from av_data_visualization import DataTest
 QUIT_KEY = ord('q')
 SAVE_KEY = ord('s')
 IMG_FILE = 'data/list/check.csv'
-REFINED_FILE = 'data/list/train_01.csv'
+REFINED_FILE = 'data/list/check_01.csv'
 
 #------------------------------------------------------------------------------
 # Main Method

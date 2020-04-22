@@ -38,6 +38,7 @@ from torch.utils.data import DataLoader
 #
 from av_nn_datagen import Datagen
 from racecarNet import ServoNet, MotorNet
+from av_parse_data import ParseData
 
 #------------------------------------------------------------------------------
 # Global Variables
@@ -46,6 +47,8 @@ TYPE = "servo"
 SHAPE = [100,100]
 SETTINGS_FILE = "data/set_servo_train.json"
 SEED = 717
+
+DEV_SET = "data/list/dev.csv"
 
 #------------------------------------------------------------------------------
 # Classes
@@ -96,6 +99,7 @@ class NNTools:
             os.remove(log_file_path)
         
         self.datagen_one = Datagen(shape=self.shape)
+        self.parsedata = ParseData()
 
         return None
     #
@@ -115,6 +119,7 @@ class NNTools:
         
         #----------------------------------------------------------------------
         ilist = pd.read_csv(csvfile)["image"].values.tolist()
+        devset = pd.read_csv(DEV_SET)
         
         # set neural network model
         model = self.model
@@ -140,7 +145,9 @@ class NNTools:
 
         #----------------------------------------------------------------------
         total_loss = []
+        dev_accuracy = []
         epoch_loss = 0.0
+        dev = 0.0
 
         # loop over the dataset multiple times
         for epoch in range(self.epochs):
@@ -181,14 +188,31 @@ class NNTools:
                 # print status for every 100 mini-batches
                 if batch % 100 == 0:                    
                     stop = timeit.default_timer()
-                    print('[%3d, %5d] loss: %2.7f time: %2.3f' %
-                          (epoch + 1, batch, running_loss / 100, stop - start))
+                    print('[%3d, %5d] loss: %2.7f time: %2.3f dev: %2.0f' %
+                          (epoch + 1, batch, running_loss / 100, stop - start, dev))
                     
                     epoch_loss = running_loss / 100
                     running_loss = 0.0
                     start = timeit.default_timer()
-
+            
+            #------------------------------------------------------------------
+            accuracy = 0
+            for index in range(len(devset)):
+                _,servo,motor = self.parsedata.parse_data(devset["image"][index])                
+                pred_data = self.predict(devset["image"][index])
+                if self.type == "servo":
+                    if abs(servo - pred_data) <= 1:
+                        accuracy += 1
+                elif self.type == "motor":
+                    if abs(motor - pred_data) <= 1:
+                        accuracy += 1
+            dev = 100*accuracy/(index+1)
+            dev_accuracy.append(dev)
+            
+            #------------------------------------------------------------------
             total_loss.append(epoch_loss)
+            model_path = 'models/servo_model_epoch_%d.pth' % epoch
+            self.save_model(mfile=model_path)
         
         #----------------------------------------------------------------------
         total_loss = np.array(total_loss)
@@ -211,6 +235,24 @@ class NNTools:
             plt.savefig("curves/Loss Curve for Servo Dataset.png")
         if self.type == "motor":
             plt.savefig("curves/Loss Curve for Motor Dataset.png")
+        
+        #----------------------------------------------------------------------
+        # dev accuracy vs epoch curve
+        plt.figure()
+        if self.type == "servo":
+            plt.plot(range(epoch+1), dev_accuracy, linewidth = 4)
+            plt.title("Servo Data Training")
+        elif self.type == "motor":
+            plt.plot(range(epoch+1), dev_accuracy, linewidth = 4)
+            plt.title("Motor Data Training")
+        
+        plt.ylabel("Dev Accuracy")
+        plt.xlabel("Epoch")
+        plt.show()
+        if self.type == "servo":
+            plt.savefig("curves/Accuracy Curve for Servo Dataset.png")
+        if self.type == "motor":
+            plt.savefig("curves/Accuracy Curve for Motor Dataset.png")
 
         return None
     #

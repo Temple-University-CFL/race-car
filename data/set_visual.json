@@ -6,6 +6,6 @@
     "servo_setting": "data/set_servo_test.json",
     "motor_setting": "data/set_servo_test.json",
     
-    "servo_model": "models/servo_model.pth",
+    "servo_model": "models/servo_model_epoch_49.pth",
     "motor_model": "models/motor_model.pth"
 }

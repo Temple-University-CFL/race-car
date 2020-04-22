@@ -4,8 +4,8 @@
     "depth": 3,
     
     "servo_setting": "data/set_servo_test.json",
-    "motor_setting": "data/set_servo_test.json",
+    "motor_setting": "data/set_motor_test.json",
     
-    "servo_model": "models/servo_model_drop.pth",
+    "servo_model": "models/servo_model_epoch_49.pth",
     "motor_model": "models/motor_model.pth"
 }
