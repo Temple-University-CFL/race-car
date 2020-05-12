@@ -1,1 +1,0 @@
-exec(open("rc_prediction_test.py").read())

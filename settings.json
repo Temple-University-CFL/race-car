@@ -1,0 +1,45 @@
+{"_": "shape of the image [width, height]",
+
+    "servo":
+    {
+        "train":
+        {
+            "shape": [50, 50],
+            "batch": 100,
+            "epoch": 500,
+           	"cuda": true
+        },
+
+        "test":
+        {
+            "model": "models/servo_model.pth",            
+            "shape": [50, 50],
+            "batch": 100,
+        	"cuda": true
+        }
+    },
+
+    "motor":
+    {
+        "train":
+        {
+            "shape": [100, 100],
+            "batch": 1,
+            "epoch": 100,
+           	"cuda": true
+        },
+
+        "test":
+        {
+            "model": "models/motor_model.pth",
+            "shape": [100, 100],
+            "batch": 10,
+        	"cuda": true
+        }
+    },
+
+    "display":
+    {
+        "shape": [640, 320]
+    }
+}
