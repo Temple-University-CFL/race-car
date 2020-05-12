@@ -42,21 +42,21 @@ def main():
 
     # servo training session
     servoTrain = NNTools(settings=SETTINGS, types=['servo','train'])
-    # servoTrain.load_model('models/servo_model.pth')
+    servoTrain.load_model('models/servo_model.pth')
     servoTrain.train(TRAIN_DATA, DEV_DATA)
 
-    # # servo testing session
-    # servoTest = NNTools(settings=SETTINGS, types=['servo','test'])
-    # servoTest.test(TEST_DATA, display=True)
+    # servo testing session
+    servoTest = NNTools(settings=SETTINGS, types=['servo','test'])
+    servoTest.test(TEST_DATA, display=True)
 
-    # # motor training session
-    # motorTrain = NNTools(settings=SETTINGS, types=['motor','train'])
-    # # servoTrain.load_model('models/servo_model.pth')
-    # motorTrain.train(TRAIN_DATA, DEV_DATA)
+    # motor training session
+    motorTrain = NNTools(settings=SETTINGS, types=['motor','train'])
+    # servoTrain.load_model('models/servo_model.pth')
+    motorTrain.train(TRAIN_DATA, DEV_DATA)
 
-    # # motor testing session
-    # motorTest = NNTools(settings=SETTINGS, types=['motor','test'])
-    # motorTest.test(TEST_DATA, display=True)
+    # motor testing session
+    motorTest = NNTools(settings=SETTINGS, types=['motor','test'])
+    motorTest.test(TEST_DATA, display=True)
 
 #==============================================================================
 # Driver Program

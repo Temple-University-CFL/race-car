@@ -27,7 +27,6 @@ import matplotlib.pyplot as plt
 #
 import torch
 from torch import nn, optim
-from torch.autograd import Variable
 from torch.utils.data import DataLoader
 
 # import local modules
@@ -87,7 +86,7 @@ class NNTools:
             self.model = MotorNet(self.shape)
 
         if types[1] == "test":
-            self.load_model()
+            self.load_model(self.model_file)
 
         # set output folders and required classes
         self.log = self.set_output()        
@@ -439,10 +438,10 @@ class NNTools:
     #
     # This method loads a model
     #
-    def load_model(self):
+    def load_model(self, model_file):
 
         # Load model from given file
-        self.model.load_state_dict(torch.load(self.model_file, \
+        self.model.load_state_dict(torch.load(model_file, \
                                              map_location=torch.device('cpu')))
 
         return None
