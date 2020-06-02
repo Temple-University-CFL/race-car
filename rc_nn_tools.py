@@ -85,11 +85,12 @@ class NNTools:
         elif self.type == "motor":
             self.model = MotorNet(self.shape)
 
-        if types[1] == "test":
+        if types[1] == "train":
+            self.log = self.set_output()
+        else:
             self.load_model(self.model_file)
 
         # set output folders and required classes
-        self.log = self.set_output()        
         self.parsedata = ParseData()
         self.datagen = Datagen(shape=self.shape)
 

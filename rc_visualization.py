@@ -100,12 +100,19 @@ class DataTest:
         image = cv2.resize(image, (self.shape[0], self.shape[1]), \
                            interpolation=cv2.INTER_CUBIC)
         cv2.line(image, (240, 280), (240 - 20*(15 - servo), 100), \
-                                     (255, 0, 0), 3)
+                                     (0, 255, 0), 3)
         cv2.line(image, (220, 280), (220 - 20*(15 - pred_servo), 100), \
-                                     (255, 255, 0), 3)
-        image = cv2.putText(image, str(pred_motor) + ":" + str(motor), \
+                                     (255, 0, 0), 3)
+            
+        # servo value display
+        image = cv2.putText(image, str(pred_servo) + ":" + str(servo), \
                                 (180, 310), cv2.FONT_HERSHEY_SIMPLEX, 1, \
                                     (255,255,255), 2, cv2.LINE_AA)
+
+        # # motor value display
+        # image = cv2.putText(image, str(pred_motor) + ":" + str(motor), \
+        #                         (180, 310), cv2.FONT_HERSHEY_SIMPLEX, 1, \
+        #                             (255,255,255), 2, cv2.LINE_AA)
 
         # show image
         cv2.imshow('picture {}'.format(index), cv2.cvtColor(image, \
@@ -150,7 +157,7 @@ class DataTest:
         image = cv2.resize(image, (self.shape[0], self.shape[1]), \
                            interpolation=cv2.INTER_CUBIC)
         cv2.line(image, (240, 300), (240 - 20*(15 - servo), 200), \
-                             (255, 0, 0), 3)
+                             (0, 255, 0), 3)
         image = cv2.putText(image, str(motor), (180, 310),  \
                                   cv2.FONT_HERSHEY_SIMPLEX, \
                                      1, (255,255,255), 2, cv2.LINE_AA)

@@ -27,8 +27,8 @@ from rc_visualization import DataTest
 #==============================================================================
 # Global Variables
 #==============================================================================
-IMAGE_LIST = 'data/list/check.csv'
-REFINED_LIST = 'data/list/check_01.csv'
+IMAGE_LIST = 'data/lists/error.csv'
+REFINED_LIST = 'data/lists/check_01.csv'
 
 SETTINGS = 'settings.json'
 QUIT_KEY = ord('q')
