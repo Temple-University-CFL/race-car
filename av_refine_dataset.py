@@ -1,32 +1,28 @@
 #!/usr/bin/env python
-#
-#==============================================================================
-# Initialization
-#==============================================================================
-# revision history
-#  20200305 (Dr. Bai): baseline software
-#  20200309 (Animesh): formating and commenting
-#
-# usage: python rc_prediction_test
-#
-# This script takes labeled image data and tests the accuracy of prediction 
-# from modeled neural network
-#
-#==============================================================================
-# Import Modules
-#==============================================================================
-#
-# import global modules
-#
-import cv2
+# -*- coding: utf-8 -*-
 
-# import local modules
-#
+"""Race-car Dataset Refining Tool.
+
+This script takes labeled image data and deletes them when they are 
+unrealistic and faulty.
+
+Revision history:
+        2020-03-05 (Dr. Bai): Baseline Software
+        2020-03-09 (Animesh): Formating and Commenting
+        2020-07-25 (Animesh): Updated Docstring
+
+Example:
+        $ python rc_refine_dataset.py
+
+"""
+
+
+#___Import Modules:
+import cv2
 from rc_visualization import DataTest
 
-#==============================================================================
-# Global Variables
-#==============================================================================
+
+#___Global Variables:
 IMAGE_LIST = 'data/lists/error.csv'
 REFINED_LIST = 'data/lists/check_01.csv'
 
@@ -34,18 +30,17 @@ SETTINGS = 'settings.json'
 QUIT_KEY = ord('q')
 SAVE_KEY = ord('s')
 
-#==============================================================================
-# Main Method
-#==============================================================================
-# method: main
-#
-# arguments: none
-#
-# return: none
-#
-# This method is the main function
-#
+
+#___Main Method:
 def main():
+    """This is the Main Method.
+
+    This method contains visualised session to refine racecar dataset.
+
+    Returns:
+        None
+
+    """
 
     # creates CarDataFile type object
     cardata = DataTest(IMAGE_LIST, SETTINGS)
@@ -73,15 +68,18 @@ def main():
             cv2.destroyAllWindows()
             break
         elif (key == SAVE_KEY):
-            cardata.display(nfile=REFINED_FILE, index=index, key=key)
+            cardata.display(nfile=REFINED_LIST, index=index, key=key)
             cv2.destroyAllWindows()
             break
+        
+            return None
 
-#==============================================================================
-# Driver Program
-#==============================================================================
+
+#___Driver Program:
 if __name__ == "__main__":
     main()
 
+
 #                                                                              
 # end of file
+"""ANI717"""
