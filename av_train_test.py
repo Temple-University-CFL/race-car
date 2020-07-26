@@ -6,8 +6,8 @@
 This script runs training and testing sessions on Race-car dataset to predict 
 speed and steering value from a provided image. 
 
-Revision history:
-        2020-05-10 (Animesh): Base-line Software
+Revision History:
+        2020-05-10 (Animesh): Baseline Software
         2020-07-25 (Animesh): Updated Docstring
 
 Example:
@@ -21,9 +21,14 @@ from rc_nn_tools import NNTools
 
 
 #___Global Variables:
-BASE = 'data/lists/5 Fold Cross-Val/fold5/'
-# BASE = 'data/lists/Random/'
+LIST = ['data/lists/Random/', 
+        'data/lists/5 Fold Cross-Val/fold1/',
+        'data/lists/5 Fold Cross-Val/fold2/',
+        'data/lists/5 Fold Cross-Val/fold3/',
+        'data/lists/5 Fold Cross-Val/fold4/',
+        'data/lists/5 Fold Cross-Val/fold5/']
 
+BASE = LIST[0]
 TRAIN_DATA = BASE + 'train.csv'
 DEV_DATA = BASE + 'dev.csv'
 TEST_DATA = BASE + 'test.csv'

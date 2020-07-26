@@ -6,7 +6,7 @@
 This script takes labeled image data and tests the accuracy of prediction from 
 modeled neural network.
 
-Revision history:
+Revision History:
         2020-03-05 (Dr. Bai): Baseline Software
         2020-03-06 (Animesh): Formating and Commenting
         2020-07-25 (Animesh): Updated Docstring
@@ -20,6 +20,7 @@ Example:
 #___Import Modules:
 import cv2
 from rc_visualization import DataTest
+
 
 #___Global Variables:
 SETTINGS = 'settings.json'
