@@ -7,9 +7,9 @@ This script takes labeled image data and tests the accuracy of prediction from
 modeled neural network.
 
 Revision History:
-        2020-03-05 (Dr. Bai): Baseline Software
-        2020-03-06 (Animesh): Formating and Commenting
-        2020-07-25 (Animesh): Updated Docstring
+        2020-03-05 (Dr. Bai): Baseline Software.
+        2020-03-06 (Animesh): Formating and Commenting.
+        2020-07-25 (Animesh): Updated Docstring.
 
 Example:
         $ python rc_prediction_test.py
@@ -33,9 +33,6 @@ def main():
     """This is the Main Method.
 
     This method contains visualised session to evaluate prediction.
-
-    Returns:
-        None
 
     """
     

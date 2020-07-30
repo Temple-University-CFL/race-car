@@ -7,8 +7,8 @@ This script runs training and testing sessions on Race-car dataset to predict
 speed and steering value from a provided image. 
 
 Revision History:
-        2020-05-10 (Animesh): Baseline Software
-        2020-07-25 (Animesh): Updated Docstring
+        2020-05-10 (Animesh): Baseline Software.
+        2020-07-25 (Animesh): Updated Docstring.
 
 Example:
         $ python av_train_test.py
@@ -26,9 +26,10 @@ LIST = ['data/lists/Random/',
         'data/lists/5 Fold Cross-Val/fold2/',
         'data/lists/5 Fold Cross-Val/fold3/',
         'data/lists/5 Fold Cross-Val/fold4/',
-        'data/lists/5 Fold Cross-Val/fold5/']
+        'data/lists/5 Fold Cross-Val/fold5/',
+        'data/lists/Debug/']
 
-BASE = LIST[0]
+BASE = LIST[6]
 TRAIN_DATA = BASE + 'train.csv'
 DEV_DATA = BASE + 'dev.csv'
 TEST_DATA = BASE + 'test.csv'
@@ -39,10 +40,7 @@ SETTINGS = 'settings.json'
 def main():
     """This is the Main Method.
 
-    This method contains training and testing session for servo and motor data
-
-    Returns:
-        None
+    This method contains training and testing session for servo and motor data.
 
     """
 

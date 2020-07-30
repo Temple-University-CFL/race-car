@@ -3,11 +3,11 @@
 
 """Race-car Dataset Refining Tool.
 
-This script helps create dataset for deep learning sessions.
+This script helps to create dataset for deep learning sessions.
 
 Revision History:
-        2020-05-11 (Animesh): Baseline Software
-        2020-07-25 (Animesh): Updated Docstring
+        2020-05-11 (Animesh): Baseline Software.
+        2020-07-25 (Animesh): Updated Docstring.
 
 Example:
         $ python rc_refine_dataset.py
@@ -24,9 +24,6 @@ def main():
     """This is the Main Method.
 
     This method performs required operations to create proper dataset.
-
-    Returns:
-        None
 
     """
 

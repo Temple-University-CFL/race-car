@@ -7,9 +7,9 @@ This script takes labeled image data and deletes them when they are
 unrealistic and faulty.
 
 Revision History:
-        2020-03-05 (Dr. Bai): Baseline Software
-        2020-03-09 (Animesh): Formating and Commenting
-        2020-07-25 (Animesh): Updated Docstring
+        2020-03-05 (Dr. Bai): Baseline Software.
+        2020-03-09 (Animesh): Formating and Commenting.
+        2020-07-25 (Animesh): Updated Docstring.
 
 Example:
         $ python rc_refine_dataset.py
@@ -36,9 +36,6 @@ def main():
     """This is the Main Method.
 
     This method contains visualised session to refine racecar dataset.
-
-    Returns:
-        None
 
     """
 
