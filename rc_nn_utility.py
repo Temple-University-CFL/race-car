@@ -184,16 +184,7 @@ class ParseData:
         
         return int(fname.split('/')[-1].split('.')[0].split('_')[-2][1:3])
     
-    #==========================================================================
-    # method: parse_motor
-    #
-    # arguments:
-    #  fname: file name
-    #
-    # return: motor data
-    #
-    # This method parses motor data from given image file
-    #
+
     def parse_motor(self, fname):
         """Motor Data Parser.
         
