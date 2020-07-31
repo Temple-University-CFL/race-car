@@ -1,56 +1,49 @@
 #!/usr/bin/env python
-#
-#==============================================================================
-# Initialization
-#==============================================================================
-# revision history
-#  20200315 (Animesh): baseline software
-#
-# usage: from rc_nn_utility import Datagen, ParseData etc
-#
-# This script contains utility classes.
-#  Datagen: line 38
-#  ParseData: line 128
-#
-#==============================================================================
-# Import Modules
-#==============================================================================
-#
-# import global modules
-#
+# -*- coding: utf-8 -*-
+
+"""Race-car Deep Learning Utility Class.
+
+This script contains data generator and data parsing tools. 
+
+Revision History:
+        2020-05-15 (Animesh): Baseline Software.
+        2020-07-30 (Animesh): Updated Docstring.
+
+Example:
+        from rc_nn_utility import Datagen, ParseData
+
+"""
+
+
+#___Import Modules:
 import cv2
 
-# import torch modules
-#
 import torch
 from torch.utils.data import Dataset
 import torchvision.transforms as transforms
 
-#==============================================================================
-# Global Variables
-#==============================================================================
+
+#___Global Variables:
 SHAPE = [100,100]
 
-#==============================================================================
-# Classes
-#==============================================================================
 
-# class: Datagen
-#
-# This class generates data for neural network training session
-#
+#__Classes:
 class Datagen(Dataset):
+    """Neural Network Data Generator.
+    
+    This class contains all methods to handle data generation for deep learning
+    session.
+    
+    """
 
-    #==========================================================================
-    # method: constructor
-    #
-    # arguments:
-    #  ilist: image file name list
-    #  isgape: image shape [width, height]
-    #
-    # return: none
-    #
     def __init__(self, ilist=None, shape=SHAPE):
+        """Constructor.
+        
+        Args:
+            ilist (list): A list of input images.
+            ishape (list): A list containing image shape [width, height].
+
+        """
         
         self.transform = transforms.Compose([transforms.ToTensor()])
         
@@ -60,41 +53,45 @@ class Datagen(Dataset):
         self.parsedata = ParseData()
 
         return None
-    #
-    # end of method
     
-    #==========================================================================
-    # method: get_image
-    #
-    # arguments:
-    #  ifile: input image file
-    #
-    # return:
-    #  image: image tensor
-    #
-    # This method returns image tensor
-    #
+
     def get_image(self, ifile):
+        """Image to Tensor converter.
+        
+        This method takes an image and returns as deep learning compatible 
+        image tensor with proper transformation.
+        
+        Args:
+            ifile (image file): Image file as input.
+        
+        Returns:
+            image (image tensor): Transformed image tensor.
+
+        """
         
         image = self.parsedata.parse_image(ifile)
         image = cv2.resize(image, (self.shape[0], self.shape[1]), \
                            interpolation=cv2.INTER_CUBIC)
         image = self.transform(image)
         return image.unsqueeze(0)
-    #
-    # end of method
 
-    #==========================================================================
-    # method: getitem
-    #
-    # arguments: 
-    #  index: index for list of images
-    #
-    # return: image, servo, motor
-    #
-    # This method returns data
-    #
+
     def __getitem__(self, index):
+        """Getitem Method.
+        
+        This method takes image, servo and motor data and returns them as 
+        deep learning compatible tensor with proper transformation.
+        
+        Args:
+            index (int): An integer indicating required data index from 
+            provided list.
+        
+        Returns:
+            image (image tensor): Transformed image tensor.
+            servo (tensor): Servo data in tensor form.
+            motor (tensor): Motor data in tensor form.
+
+        """
         
         # parse image, servo and motor data
         image,servo,motor = self.parsedata.parse_data(self.ilist[index])
@@ -107,93 +104,85 @@ class Datagen(Dataset):
         motor = torch.tensor(float(motor))
         
         return image, servo, motor
-    #
-    # end of method
 
-    #==========================================================================
-    # method: length
-    #
-    # arguments: none
-    #
-    # return: none
-    #
-    # This method returns length of data
-    #
+
     def __len__(self):
+        """Len Method.
+        
+        This method returns the length of provided list.
+
+        """
         
         return len(self.ilist)
-    #
-    # end of method
 
 
-#==============================================================================
-# class: ParseData
-#
-# This class parses datas
-#
 class ParseData:
+    """Data Parser Class
+    
+    This class contains all tools to parse servo, motor and image data from a 
+    given list item.
+    
+    """
 
-    #==========================================================================
-    # method: constructor
-    #
-    # arguments: none
-    #
-    # return: none
-    #
     def __init__(self):
+        """Constructor.
+
+        """
 
         return None
-    #
-    # end of method
 
-    #==========================================================================
-    # method: parse_data
-    #
-    # arguments:
-    #  fname: file name
-    #
-    # return: image data, servo data, motor data
-    #
-    # This method parses image, servo and motor data from given image file
-    #
+
     def parse_data(self, fname):
+        """Data Parser.
+        
+        This method parses data from a given file name.
+        
+        Args:
+            fname (string): File name containing image directory along with 
+                servo and motor value.
+
+        Returns:
+            (image file): Image file in opencv format.
+            (int): Servo value.
+            (int): Motor value.
+        
+        """
         
         return self.parse_image(fname), \
                     self.parse_servo(fname), self.parse_motor(fname)
-    #
-    # end of method
+
     
-    #==========================================================================
-    # method: parse_image
-    #
-    # arguments:
-    #  fname: file name
-    #
-    # return: image data
-    #
-    # This method parses image data from given image file
-    #
     def parse_image(self, fname):
+        """Image Parser.
+        
+        This method parses image from a given file name.
+        
+        Args:
+            fname (string): File name containing image directory.
+
+        Returns:
+            (image file): Image file in opencv format.
+        
+        """
 
         return cv2.imread(fname)
-    #
-    # end of method
     
-    #==========================================================================
-    # method: parse_servo
-    #
-    # arguments:
-    #  fname: file name
-    #
-    # return: servo data
-    #
-    # This method parses servo data from given image file
-    #
+
     def parse_servo(self, fname):
+        """Servo Data Parser.
+        
+        This method parses servo data from a given file name.
+        
+        Args:
+            fname (string): File name containing image directory along with 
+                servo and motor value.
+
+        Returns:
+            (int): Servo value.
+        
+        """
         
         return int(fname.split('/')[-1].split('.')[0].split('_')[-2][1:3])
-    #
-    # end of method
     
     #==========================================================================
     # method: parse_motor
@@ -206,32 +195,22 @@ class ParseData:
     # This method parses motor data from given image file
     #
     def parse_motor(self, fname):
+        """Motor Data Parser.
+        
+        This method parses motor data from a given file name.
+        
+        Args:
+            fname (string): File name containing image directory along with 
+                servo and motor value.
+
+        Returns:
+            (int): Motore value.
+        
+        """
         
         return int(fname.split('/')[-1].split('.')[0].split('_')[-1][1:3])
-    #
-    # end of method
-
-#==============================================================================
 
 
-
-
-
-
-
-#==============================================================================
-# Debugging Block ANI717
-#==============================================================================
-#from torch.utils.data import DataLoader
-#
-#file = 'data/list/list_1.csv'
-#
-#dataloader = DataLoader(dataset=Datagen(file,shape=[10,8]), batch_size=1000, \
-#                        shuffle=True)
-#for image, servo, motor in dataloader:
-#    print(image.shape)
-#    print(servo, motor)
-
-#==============================================================================
-#a = CarUtility()
-#img,servo,motor = a.parse_data('data/images/output_0002/i0000009_s15_m16.jpg')
+#                                                                              
+# end of file
+"""ANI717"""

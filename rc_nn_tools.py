@@ -187,9 +187,8 @@ class NNTools:
                 # print status for every 100 mini-batches
                 if batch % 100 == 0:                    
                     stop = timeit.default_timer()
-                    print('[%3d, %5d] loss: %2.7f time: %2.3f dev: %2.0f' %
-                        (epoch, batch, running_loss/100, \
-                                 stop-start, accuracy))
+                    print('[{0: 3d}, {1: 5d}] loss: {2: 2.7f} time: {3: 2.3f} dev: {4: 2.0f}'\
+                        .format(epoch, batch, running_loss/100, stop-start, accuracy))
 
                     epoch_loss = running_loss/100
                     running_loss = 0.0
@@ -261,8 +260,8 @@ class NNTools:
             total_accuracy += sum(accuracy).item()
 
             if display and count%100 == 0:
-                print("[%5d] accuracy: %2.2f" % \
-                      (count, total_accuracy*100/count))
+                print("[{0: 5d}] accuracy: {1: 2.2f}"\
+                      .format(count, total_accuracy*100/count))
 
         if display:
             print("total accuracy = %2.2f" % (total_accuracy*100/len(testset)))

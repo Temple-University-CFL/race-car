@@ -17,6 +17,7 @@ Example:
 
 
 #___Import Modules:
+import torch
 from rc_nn_tools import NNTools
 
 
@@ -43,6 +44,9 @@ def main():
     This method contains training and testing session for servo and motor data.
 
     """
+    
+    # # pass a dummy input to GPU for alloting cache
+    # torch.randn(717).cuda()
 
     # servo training session:
     servoTrain = NNTools(settings=SETTINGS, types=['servo','train'])

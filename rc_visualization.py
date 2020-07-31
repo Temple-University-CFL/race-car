@@ -100,9 +100,9 @@ class DataTest:
         image = cv2.resize(image, (self.shape[0], self.shape[1]), \
                            interpolation=cv2.INTER_CUBIC)
         cv2.line(image, (240, 280), (240 - 20*(15 - servo), 100), \
-                                     (0, 255, 0), 3)
-        cv2.line(image, (220, 280), (220 - 20*(15 - pred_servo), 100), \
                                      (255, 0, 0), 3)
+        cv2.line(image, (220, 280), (220 - 20*(15 - pred_servo), 100), \
+                                     (0, 255, 0), 3)
             
         # servo value display
         image = cv2.putText(image, str(pred_servo) + ":" + str(servo), \
@@ -117,7 +117,7 @@ class DataTest:
         # show image
         cv2.imshow('picture {}'.format(index), cv2.cvtColor(image, \
                                    cv2.COLOR_RGB2BGR))
-        cv2.moveWindow('picture {}'.format(index), 500,500)
+        cv2.moveWindow('picture {}'.format(index), 200,200)
 
         return None
     #
@@ -165,7 +165,7 @@ class DataTest:
         # show image
         cv2.imshow('picture {}'.format(index), cv2.cvtColor(image, \
                                cv2.COLOR_RGB2BGR))
-        cv2.moveWindow('picture {}'.format(index), 500,500)
+        cv2.moveWindow('picture {}'.format(index), 200,200)
 
         return None
     #
