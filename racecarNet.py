@@ -7,12 +7,12 @@ This script contains required deep learnling models.
 
 
 Revision History:
-        2020-03-15 (Dr. Bai): Baseline Train-test Model.
+        2020-03-15 (Dr. Bai): Baseline Train-test Model
         2020-03-15 (Animesh): Formatting, Commenting, Modified to make 
-                              compatioble with any shape of image input.
-        2020-05-20 (Dr. Bai): Simpler Flat-size Calculator Implemented.
-        2020-05-20 (Animesh): More Simpler Flat-size Calculator Implemented.
-        2020-07-26 (Animesh): Updated Docstring.
+                              compatioble with any shape of image input
+        2020-05-20 (Dr. Bai): Simpler Flat-size Calculator Implemented
+        2020-05-20 (Animesh): More Simpler Flat-size Calculator Implemented
+        2020-07-26 (Animesh): Updated Docstring
 
 Example:
         from racecarNet import ServoNet, MotorNet
@@ -46,7 +46,10 @@ class ServoNet(nn.Module):
         """Constructor.
 
         Args:
-            shape (list): A list containing image shape [width, height].
+            shape (list): A list containing image shape [width, height]
+
+        Returns:
+            None
 
         """
 
@@ -85,10 +88,10 @@ class ServoNet(nn.Module):
         This method passes tensors through neural network model.
         
         Args:
-            x (tensor): Tensor converted input image data.
+            x (tensor): Tensor converted input image data
 
         Returns:
-            x (tensor): Prediction from neural network.
+            x (tensor): Prediction from neural network
 
         """
 
@@ -114,7 +117,10 @@ class MotorNet(nn.Module):
         """Constructor.
         
         Args:
-            shape (list): A list containing image shape [width, height].
+            shape (list): A list containing image shape [width, height]
+
+        Returns:
+            None
 
         """
         
@@ -152,10 +158,10 @@ class MotorNet(nn.Module):
         This method passes tensors through neural network model.
         
         Args:
-            x (tensor): Tensor converted input image data.
+            x (tensor): Tensor converted input image data
 
         Returns:
-            x (tensor): Prediction from neural network.
+            x (tensor): Prediction from neural network
 
         """
 

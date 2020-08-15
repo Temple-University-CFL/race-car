@@ -1,35 +1,33 @@
 #!/usr/bin/env python
-#
-#==============================================================================
-# Initialization
-#==============================================================================
-# revision history
-#  20200305 (Dr. Bai): baseline software
-#  20200309 (Animesh): modification for accepting image files instead of 
-#                      numpy array to reduce complexity and processing time
-#
-# usage: from rc_visualization import CarDataFile
-#
-# This script refines dataset and explores prediction
-#
-#==============================================================================
-# Import Modules
-#==============================================================================
-#
-# import global modules
-#
+# -*- coding: utf-8 -*-
+
+"""Race-car Visualization Utility Class.
+
+This script contains required tools to refine dataset and explore prediction
+visually. 
+
+Revision History:
+        2020-03-09 (Animesh): Baseline Software.
+        2020-08-15 (Animesh): Updated Docstring, compatible with dynamic 
+                              resolution, improved Interface.
+
+Example:
+        from rc_visualization import DataTest
+
+"""
+
+
+#___Import Modules:
 import cv2
 import json
+import math
 import pandas as pd
 
-# import local modules
-#
 from rc_nn_tools import NNTools
 from rc_nn_utility import ParseData
 
-#==============================================================================
-# Global Variables
-#==============================================================================
+
+#___Global Variables:
 IMAGE_LIST = 'data/list/list_0.csv'
 NEW_LIST = 'data/list/list_0_1.csv'
 SETTINGS = 'settings.json'
@@ -38,105 +36,137 @@ SPACE_KEY = ord(' ')
 DEL_KEY = ord('d')
 SAVE_KEY = ord('s')
 
-#==============================================================================
-# Classes
-#==============================================================================
 
-# class: DataTest
-#
-# This class refines dataset and explores prefdiction
-#
+#__Classes:
 class DataTest:
+    """Data Test Class.
+    
+    This class contains all methods to refine dataset and test prediction on
+    visually.
+    
+    """
 
-    #==========================================================================
-    # method: constructor
-    #
-    # arguments:
-    #  dfile: image data holder file
-    #  dwidth: width of the images
-    #  dheight: height of the images
-    #
-    # return: none
-    #
     def __init__(self, ifile=IMAGE_LIST, sfile=SETTINGS, predict=None):
+        """Constructor.
+        
+        Args:
+            ifile (csv file): This file contains list of images.
+            sfile (json file): This file contains all user setting.
+            predict (boolian): This flag determines the session is for 
+                prediction or not.
+
+        """
 
         self.data = pd.read_csv(ifile)
         self.len = len(self.data)
         self.badindex=[]
 
         with open(sfile) as fp:
-            content = json.load(fp)['display']            
+            content = json.load(fp)['display']       
+            self.position = content['position']
             self.shape = content['shape']
+            self.motor_flag = content['motor_flag']
+            self.watermark = content['watermark']
+            self.angle = math.pi*content['angle']/90
 
         if predict:
             self.servo_pred = NNTools(sfile, ['servo','test'])
             self.motor_pred = NNTools(sfile, ['motor','test'])
 
-        self.parsedata = ParseData()  
+        self.parsedata = ParseData()
 
-    #
-    # end of method
 
-    #==========================================================================
-    # method: display_pred
-    #
-    # arguments:
-    #  index: index value
-    #
-    # return: none
-    #
-    # This method compares prediction with given data
-    #
     def display_pred(self, index=0):
+        """Method for Prediction Test.
+        
+        This method takes images and display them with target and prediction
+        values.
+        
+        Args:
+            index (int): Index value pointing image list.
+
+        """
         
         # parse image, servo and motor data
         image,servo,motor = self.parsedata.parse_data(self.data["image"][index])
         
         # make prediction
-        pred_servo =  self.servo_pred.predict(self.data["image"][index])
-        pred_motor =  self.motor_pred.predict(self.data["image"][index])
+        pred =  self.servo_pred.predict(self.data["image"][index]) 
         
-        # process image with servo and motor values for displey
+        # reshape image for displey
         image = cv2.resize(image, (self.shape[0], self.shape[1]), \
                            interpolation=cv2.INTER_CUBIC)
-        cv2.line(image, (240, 280), (240 - 20*(15 - servo), 100), \
-                                     (255, 0, 0), 3)
-        cv2.line(image, (220, 280), (220 - 20*(15 - pred_servo), 100), \
-                                     (0, 255, 0), 3)
-            
-        # servo value display
-        image = cv2.putText(image, str(pred_servo) + ":" + str(servo), \
-                                (180, 310), cv2.FONT_HERSHEY_SIMPLEX, 1, \
-                                    (255,255,255), 2, cv2.LINE_AA)
 
-        # # motor value display
-        # image = cv2.putText(image, str(pred_motor) + ":" + str(motor), \
-        #                         (180, 310), cv2.FONT_HERSHEY_SIMPLEX, 1, \
-        #                             (255,255,255), 2, cv2.LINE_AA)
+        # set base point
+        origin = [self.shape[0]//2, self.shape[1]-20]
+
+        # line display for showing steering angle
+        cv2.line(image, (origin[0], origin[1]-40), \
+            (origin[0]-2*int(math.sin(self.angle*(15-servo)/10)*origin[1]/3), \
+             origin[1]-40-2*int(math.cos(self.angle*(15-servo)/10)*origin[1]/3)), \
+                     (127,255,0), 5)
+        cv2.line(image, (origin[0], origin[1]-40), \
+            (origin[0]-2*int(math.sin(self.angle*(15-pred)/10)*origin[1]/3), \
+             origin[1]-40-2*int(math.cos(self.angle*(15-pred)/10)*origin[1]/3)), \
+                     (255,127,0), 5)
+        
+        # display target and prediction with texts
+        image = cv2.putText(image, ":", \
+                                (origin[0]-5, origin[1]), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (255,255,255), 2, cv2.LINE_AA)
+        image = cv2.putText(image, "(Target)" + str(servo), \
+                                (origin[0]-215, origin[1]), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (127,255,0), 2, cv2.LINE_AA)
+        image = cv2.putText(image, str(pred) + "(Predict)", \
+                                (origin[0]+12, origin[1]), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (255,127,0), 2, cv2.LINE_AA)
+        
+        # display motor value
+        if self.motor_flag:
+            pred = self.motor_pred.predict(self.data["image"][index])
+            image = cv2.putText(image, ":", \
+                                (origin[0]-5, 40), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (255,255,255), 2, cv2.LINE_AA)
+            image = cv2.putText(image, "(Target)" + str(motor), \
+                                (origin[0]-215, 40), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (127,255,0), 2, cv2.LINE_AA)
+            image = cv2.putText(image, str(pred) + "(Predict)", \
+                                (origin[0]+12, 40), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (255,127,0), 2, cv2.LINE_AA)
+
+        # display watermark
+        if self.watermark:
+            image = cv2.putText(image, "ANI717", \
+                                (20, 40), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (255,255,255), 2, cv2.LINE_AA)
 
         # show image
         cv2.imshow('picture {}'.format(index), cv2.cvtColor(image, \
                                    cv2.COLOR_RGB2BGR))
-        cv2.moveWindow('picture {}'.format(index), 200,200)
+        cv2.moveWindow('picture {}'.format(index), *self.position)
 
         return None
-    #
-    # end of method
 
-    #==========================================================================
-    # method: display
-    #
-    # arguments:
-    #  index: index value
-    #  key: provided key press
-    #  nfile: new csv file to store refined images
-    #
-    # return: none
-    #
-    # This method displays images, also lets user to refine image set by 
-    # deleting unwanted images
-    #
+
     def display(self, nfile=NEW_LIST, index=0, key=SPACE_KEY):
+        """Method for Refine Dataset.
+        
+        This method displays images, also lets user to refine image set by 
+        deleting unwanted images.
+        
+        Args:
+            index (int): Index value pointing image list.
+            key (key press): Provided key press.
+            nfile (csv file): New csv file to store refined images
+
+        """
         
         # when 'd' is pressed, (index-1) value is appended in badindex array
         # when 's' is pressed, all image data except deleted indices is saved
@@ -153,42 +183,47 @@ class DataTest:
         # parse image, servo and motor data
         image,servo,motor = self.parsedata.parse_data(self.data["image"][index])
         
-        # process image with servo and motor values for displey
+        # reshape image for displey
         image = cv2.resize(image, (self.shape[0], self.shape[1]), \
                            interpolation=cv2.INTER_CUBIC)
-        cv2.line(image, (240, 300), (240 - 20*(15 - servo), 200), \
-                             (0, 255, 0), 3)
-        image = cv2.putText(image, str(motor), (180, 310),  \
-                                  cv2.FONT_HERSHEY_SIMPLEX, \
-                                     1, (255,255,255), 2, cv2.LINE_AA)
+
+        # set base point
+        origin = [self.shape[0]//2, self.shape[1]-20]
         
+        # line display for showing steering angle
+        cv2.line(image, (origin[0], origin[1]-40), \
+            (origin[0]-2*int(math.sin(self.angle*(15-servo)/10)*origin[1]/3), \
+             origin[1]-40-2*int(math.cos(self.angle*(15-servo)/10)*origin[1]/3)), \
+                         (0,255,0), 7)
+        
+        # display target and prediction with texts
+        image = cv2.putText(image, str(servo), \
+                                (origin[0]-30, origin[1]), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (255,255,255), 2, cv2.LINE_AA)
+        
+        # display motor value
+        if self.motor_flag:
+            image = cv2.putText(image, str(motor), \
+                                (origin[0]-30, 40), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (255,255,255), 2, cv2.LINE_AA)
+        
+        # display watermark
+        if self.watermark:
+            image = cv2.putText(image, "ANI717", \
+                                (20, 40), \
+                                    cv2.FONT_HERSHEY_SIMPLEX, 1.2, \
+                                    (255,255,255), 2, cv2.LINE_AA)
+
         # show image
         cv2.imshow('picture {}'.format(index), cv2.cvtColor(image, \
-                               cv2.COLOR_RGB2BGR))
-        cv2.moveWindow('picture {}'.format(index), 200,200)
+                                   cv2.COLOR_RGB2BGR))
+        cv2.moveWindow('picture {}'.format(index), *self.position)
 
         return None
-    #
-    # end of method
-
-#==============================================================================
 
 
-
-
-
-
-
-#==============================================================================
-# Debugging Block ANI717
-#==============================================================================
-#import timeit
-#QUIT_KEY = ord('q')
-#total_start = timeit.default_timer()
-#
-#cardata = CarDataFile()
-#for i in range(100):
-#    cardata.display_pred(index=i)
-#
-#total_stop = timeit.default_timer()
-#print('Total time required: %f' % (total_stop - total_start))
+#                                                                              
+# end of file
+"""ANI717"""
