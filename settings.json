@@ -40,7 +40,7 @@
 
     "display":
     {
-        "watermark": true,
+        "watermark": false,
         "position": [500, 500],
         "shape": [1000, 500],
         "motor_flag": false,
