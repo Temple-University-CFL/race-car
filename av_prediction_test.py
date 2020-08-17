@@ -1,50 +1,41 @@
 #!/usr/bin/env python
-#
-#==============================================================================
-# Initialization
-#==============================================================================
-# revision history
-#  20200305 (Dr. Bai): baseline software
-#  20200306 (Animesh): formating and commenting
-#
-# usage: python rc_prediction_test
-#
-# This script takes labeled image data and tests the accuracy of prediction 
-# from modeled neural network
-#
-#==============================================================================
-# Import Modules
-#==============================================================================
-#
-# import global modules
-#
-import cv2
+# -*- coding: utf-8 -*-
 
-# import local modules
-#
+"""Race-car Prediction Testing Tool.
+
+This script takes labeled image data and tests the accuracy of prediction from 
+modeled neural network.
+
+Revision History:
+        2020-03-05 (Dr. Bai): Baseline Software.
+        2020-03-06 (Animesh): Formating and Commenting.
+        2020-07-25 (Animesh): Updated Docstring.
+
+Example:
+        $ python rc_prediction_test.py
+
+"""
+
+
+#___Import Modules:
+import cv2
 from rc_visualization import DataTest
 
-#------------------------------------------------------------------------------
-# Global Variables
-#------------------------------------------------------------------------------
+
+#___Global Variables:
 SETTINGS = 'settings.json'
-IMAGE_LIST = 'data/list/test.csv'
+IMAGE_LIST = 'data/lists/Random/test.csv'
 QUIT_KEY = ord('q')
 
 
-#==============================================================================
-# Main Method
-#==============================================================================
-# method: main
-#
-# arguments: none
-#
-# return: none
-#
-# This method is the main function
-#
+#___Main Method:
 def main():
+    """This is the Main Method.
 
+    This method contains visualised session to evaluate prediction.
+
+    """
+    
     # creates CarDataFile type object
     cardata = DataTest(IMAGE_LIST, SETTINGS, True)
 
@@ -67,12 +58,15 @@ def main():
 
         # close wondow
         cv2.destroyAllWindows()
+    
+    return None
 
-#==============================================================================
-# Driver Program
-#==============================================================================
+
+#___Driver Program:
 if __name__ == "__main__":
     main()
 
+
 #                                                                              
 # end of file
+"""ANI717"""

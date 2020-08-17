@@ -1,21 +1,22 @@
 #!/usr/bin/env python
-#
-#==============================================================================
-# Initialization
-#==============================================================================
-# revision history
-#  20200510 (Animesh): baseline software
-#
-# usage: from rc_nn_tools import NNTools
-#
-# This script contains required deep learnling tools
-#
-#==============================================================================
-# Import Modules
-#==============================================================================
-#
-# import global modules
-#
+# -*- coding: utf-8 -*-
+
+"""Race-car Deep Learning Class.
+
+This script contains all deep learning tools to train and predict speed and 
+steering value from a provided image. 
+
+Revision History:
+        2020-05-10 (Animesh): Baseline Software.
+        2020-07-30 (Animesh): Updated Docstring.
+
+Example:
+        from rc_nn_tools import NNTools
+
+"""
+
+
+#___Import Modules:
 import os
 import json
 import timeit
@@ -23,45 +24,39 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# import torch modules
-#
 import torch
 from torch import nn, optim
 from torch.utils.data import DataLoader
 
-# import local modules
-#
 from rc_nn_utility import Datagen, ParseData
 from racecarNet import ServoNet, MotorNet
 
-#==============================================================================
-# Global Variables
-#==============================================================================
-TYPE = ["servo","test"]
+
+#___Global Variables:
+TYPE = ["servo", "test"]
 SETTINGS = 'settings.json'
 ODIR = "output/"
 SEED = 717
 
-#==============================================================================
-# Classes
-#==============================================================================
 
-# class: NNTools
-#
-# This class contains required deep learning tools
-#
+#__Classes:
 class NNTools:
+    """Neural Network Tool Class.
+    
+    This class contains all methods to complete whole deep learing session
+    containing training, testing and prediction-make sessions.
+    
+    """
 
-    #==========================================================================
-    # method: constructor
-    #
-    # arguments:
-    #  settings: setting file for class parameters
-    #  types: [servo/motor,train/test] type
-    #
-    # return: none
-    #
     def __init__(self, settings=SETTINGS, types=TYPE):
+        """Constructor.
+        
+        Args:
+            settings (JSON file): Contains all settings manually provided.
+            types (list): Contains settings to determine the session is for
+                training or testing.
+
+        """
 
         self.type = types[0]
 
@@ -85,30 +80,31 @@ class NNTools:
         elif self.type == "motor":
             self.model = MotorNet(self.shape)
 
-        if types[1] == "test":
+        if types[1] == "train":
+            self.log = self.set_output()
+        else:
             self.load_model(self.model_file)
 
         # set output folders and required classes
-        self.log = self.set_output()        
         self.parsedata = ParseData()
         self.datagen = Datagen(shape=self.shape)
 
         return None
-    #
-    # end of method
 
-    #==========================================================================
-    # method: set_output
-    #
-    # arguments: none
-    #
-    # return: 
-    #  log: log file path
-    #
-    # This method creates files and folders for producing output
-    #
+
     def set_output(self):
+        """Output Manager.
+        
+        This method checks files and directories for producing output during
+        training session and creates them if they don't exist.
+        
+        Returns:
+            log (file): Location of log file to dump results during training 
+                session.
 
+        """
+
+        # checks and creates output directories
         if not os.path.exists(ODIR):
             os.mkdir(ODIR)        
         if not os.path.exists(os.path.join(ODIR,"curves")):
@@ -116,7 +112,8 @@ class NNTools:
         if not os.path.exists(os.path.join(ODIR,"models")):
             os.mkdir(os.path.join(ODIR,"models"))
 
-        log = os.path.join(ODIR,"result.txt")
+        # checks and creates log file to dump results
+        log = os.path.join(ODIR,"result.csv")
         if os.path.exists(log):
             os.remove(log)
             open(log, 'a').close()
@@ -124,23 +121,20 @@ class NNTools:
             open(log, 'a').close()
 
         return log
-    #
-    # end of method
 
-    #==========================================================================
-    # method: train
-    #
-    # arguments:
-    #  trainset: train dataset
-    #  devset: dev dataset
-    #
-    # return: none
-    #
-    # This method runs training session
-    #
+
     def train(self, trainset, devset):
+        """Mathod to run Training Session.
+        
+        This method runs the complete training session and produces plots and
+        results in every epoch.
+        
+        Args:
+            trainset (pandas dataframe): Contains training data.
+            devset (pandas dataframe): Contains validation data.
 
-        #----------------------------------------------------------------------
+        """
+
         trainset = pd.read_csv(trainset)["image"].values.tolist()
 
         # set neural network model and loss function
@@ -157,8 +151,8 @@ class NNTools:
         # set dataloader
         dataloader = DataLoader(dataset=Datagen(trainset, self.shape), \
                                     batch_size=self.batch_size, shuffle=True)
-
-        #----------------------------------------------------------------------
+       
+        # initialize conunter and result holder
         total_loss = []
         dev_accuracy = []
         epoch_loss = 0.0
@@ -193,15 +187,13 @@ class NNTools:
                 # print status for every 100 mini-batches
                 if batch % 100 == 0:                    
                     stop = timeit.default_timer()
-                    print('[%3d, %5d] loss: %2.7f time: %2.3f dev: %2.0f' %
-                        (epoch, batch, running_loss/100, \
-                                 stop-start, accuracy))
+                    print('[{0: 3d}, {1: 5d}] loss: {2: 2.7f} time: {3: 2.3f} dev: {4: 2.0f}'\
+                        .format(epoch, batch, running_loss/100, stop-start, accuracy))
 
                     epoch_loss = running_loss/100
                     running_loss = 0.0
                     start = timeit.default_timer()
 
-            #------------------------------------------------------------------
             # accuracy count on dev set
             accuracy = self.test(devset)
             dev_accuracy.append(accuracy)
@@ -221,22 +213,22 @@ class NNTools:
             print("Motor model training finished!")
 
         return None
-    #
-    # end of method
 
-    #==========================================================================
-    # method: test
-    #
-    # arguments:
-    #  testset: test dataset
-    #
-    # return: none
-    #
-    # This method runs testing session
-    #
+
     def test(self, testset, display=False):
+        """Mathod to run Testing Session.
+        
+        This method runs the complete testing session producing results.
+        
+        Args:
+            testset (pandas dataframe): Contains testing data.
+            display (boolian): Flag to display result or not.
+        
+        Returns:
+            (float): Accuracy percentage.
 
-        #----------------------------------------------------------------------
+        """
+
         testset = pd.read_csv(testset)["image"].values.tolist()
         
         # set neural network model
@@ -249,7 +241,6 @@ class NNTools:
         dataloader = DataLoader(dataset=Datagen(testset, self.shape), \
                                     batch_size=self.batch_size, shuffle=False) 
 
-        #----------------------------------------------------------------------
 
         # initialize train loss and running loss
         total_accuracy = 0.0
@@ -269,31 +260,30 @@ class NNTools:
             total_accuracy += sum(accuracy).item()
 
             if display and count%100 == 0:
-                print("[%5d] accuracy: %2.2f" % \
-                      (count, total_accuracy*100/count))
+                print("[{0: 5d}] accuracy: {1: 2.2f}"\
+                      .format(count, total_accuracy*100/count))
 
         if display:
             print("total accuracy = %2.2f" % (total_accuracy*100/len(testset)))
 
         return total_accuracy*100/len(testset)
-    #
-    # end of method
 
-    #==========================================================================
-    # method: set_io
-    #
-    # arguments:
-    #  image: image tensor
-    #  servo: servo tensor
-    #  motor: motor tensor
-    #
-    # return: 
-    #  input: input tensor
-    #  target: target tensor
-    #
-    # This method sets input and target with/without GPU support
-    #
+
     def set_io(self, image, servo, motor):
+        """Data management for Deep Learning.
+        
+        This method sets input and target with/without GPU support if required.
+        
+        Args:
+            image (tensor): Tensor converted image data.
+            servo (tensor): Tensor converted servo data.
+            motor (tensor): Tensor converted motor data.
+        
+        Returns:
+            input (tensor): Input in tensor form.
+            target (tensor): Target in tensor form.
+
+        """
 
         if (self.cuda):
             input = image.cuda(non_blocking=True)
@@ -309,24 +299,20 @@ class NNTools:
                 target = motor
 
         return input, target
-    #
-    # end of method
 
-    #==========================================================================
-    # method: plot_result
-    #
-    # arguments:
-    #  image: image tensor
-    #  servo: servo tensor
-    #  motor: motor tensor
-    #
-    # return: 
-    #  input: input tensor
-    #  target: target tensor
-    #
-    # This method sets input and target with/without GPU support
-    #
+
     def plot_result(self, epoch, total_loss, dev_accuracy):
+        """Managing Result.
+        
+        This method produces result with required plots in proper format at 
+        each epoch.
+        
+        Args:
+            epoch (int): Indicator of epoch count.
+            total loss (float): The accumulated loss.
+            dev_accuracy (float): Accuracy percentage on validation data.
+
+        """
 
         # plotting loss vs epoch curve
         plt.figure()
@@ -343,7 +329,6 @@ class NNTools:
         plt.savefig(fig_path)
         plt.close()
 
-        #----------------------------------------------------------------------
         # dev accuracy vs epoch curve
         plt.figure()
         plt.plot(range(1,epoch+1), dev_accuracy, linewidth = 4)
@@ -360,34 +345,36 @@ class NNTools:
         plt.savefig(fig_path)
         plt.close()
         
-        #----------------------------------------------------------------------
         # save accuracy values and show finish message
         if self.type == "servo":
-            content = "Servo Model: epoch %d - accuracy: %2.2f - best %d\n" \
-                    % (epoch, dev_accuracy[epoch-1], np.argmax(dev_accuracy)+1)
+            content = "{0: 4d},{1: 2.2f},\
+                Servo: epoch {0: 4d} - accuracy: {1: 2.2f} - best {2: 4d}\n"\
+                .format(epoch, dev_accuracy[epoch-1], np.argmax(dev_accuracy)+1)
         if self.type == "motor":
-            content = "Motor Model: epoch %d - accuracy: %2.2f - best %d\n" \
-                    % (epoch, dev_accuracy[epoch-1], np.argmax(dev_accuracy)+1)
+            content = "{0: 4d},{1: 2.2f},\
+                Motor: epoch {0: 4d} - accuracy: {1: 2.2f} - best {2: 4d}\n"\
+                .format(epoch, dev_accuracy[epoch-1], np.argmax(dev_accuracy)+1)
 
         # write in log
         with open(self.log, 'a') as fp:
             fp.write(content)
 
         return None
-    #
-    # end of method
 
-    #==========================================================================
-    # method: predict
-    #
-    # arguments:
-    #  image: input image
-    #
-    # return: prediction for single image
-    #
-    # This method takes an image and predicts servo/motor value from ginen type
-    #
+
     def predict(self, iname):
+        """Mathod for Prediction.
+        
+        This method predicts streering or speed value from a provided single
+        image.
+        
+        Args:
+            iname (image file): Image file as input.
+        
+        Returns:
+            (int): Predicted steering or speed value.
+
+        """
              
         image = self.datagen.get_image(iname)
         
@@ -402,20 +389,18 @@ class NNTools:
             return model(image.cuda(non_blocking=True)).round().int().item()
         else:
             return model(image).round().int().item()
-    #
-    # end of method
 
-    #==========================================================================
-    # method: save_model
-    #
-    # arguments:
-    #  mfile: input model file
-    #
-    # return: none
-    #
-    # This method saves a model
-    #
+
     def save_model(self, mfile='models/servo_model.pth'):
+        """Mathod to save Trained Model.
+        
+        This method predicts streering or speed value from a provided single
+        image.
+        
+        Args:
+            mfile (model file): Model file Location to save the model.
+
+        """
         
         if self.type == "servo":
             print('Saving servo Model ')
@@ -425,54 +410,23 @@ class NNTools:
             torch.save(self.model.state_dict(), mfile)
     
         return None
-    #
-    # end of method
 
-    #==========================================================================
-    # method: load_model
-    #
-    # arguments:
-    #  mfile: input model file
-    #
-    # return: none
-    #
-    # This method loads a model
-    #
-    def load_model(self, model_file):
+
+    def load_model(self, mfile):
+        """Mathod to load a Model.
+        
+        Args:
+            mfile (model file): Model file Location.
+
+        """
 
         # Load model from given file
-        self.model.load_state_dict(torch.load(model_file, \
+        self.model.load_state_dict(torch.load(mfile, \
                                              map_location=torch.device('cpu')))
 
         return None
-    #
-    # end of method
-
-#==============================================================================
 
 
-
-
-
-
-
-#==============================================================================
-# Debugging Block ANI717
-#==============================================================================
-#a = NNTools("data/set_servo_train.json")
-#a.train('data/list/list_0.csv')
-#a.save_model('models/servo_model.pth')
-
-#aa = NNTools("data/set_servo_test.json")
-#aa.load_model('models/servo_model.pth')
-#aa.test('data/list/list_2.csv')
-#print(aa.predict("data/images/output_0002/i0000000_s15_m15.jpg"))
-    
-#b = NNTools("data/set_motor_train.json")
-#b.train('data/list/list_0.csv')
-#b.save_model('models/motor_model.pth')
-
-#bb = NNTools("data/set_motor_test.json")
-#bb.load_model('models/motor_model.pth')
-#bb.test('data/list/list_2.csv')
-#print(bb.predict("data/images/output_0002/i0000000_s15_m15.jpg"))
+#                                                                              
+# end of file
+"""ANI717"""
