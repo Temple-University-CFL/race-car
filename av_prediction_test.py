@@ -24,8 +24,10 @@ from rc_visualization import DataTest
 
 #___Global Variables:
 SETTINGS = 'settings.json'
-IMAGE_LIST = 'data/lists/Random/test.csv'
 QUIT_KEY = ord('q')
+
+"""User has to provide here the path of image list for prediction"""
+IMAGE_LIST = 'data/error.csv'
 
 
 #___Main Method:

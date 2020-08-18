@@ -23,12 +23,13 @@ from rc_visualization import DataTest
 
 
 #___Global Variables:
-IMAGE_LIST = 'data/lists/error.csv'
-REFINED_LIST = 'data/lists/check_01.csv'
-
 SETTINGS = 'settings.json'
 QUIT_KEY = ord('q')
 SAVE_KEY = ord('s')
+
+"""User has to provide here the path of image list and refined image list"""
+IMAGE_LIST = 'data/error.csv'
+REFINED_LIST = 'data/error_01.csv'
 
 
 #___Main Method:

@@ -28,9 +28,10 @@ LIST = ['data/lists/Random/',
         'data/lists/5 Fold Cross-Val/fold3/',
         'data/lists/5 Fold Cross-Val/fold4/',
         'data/lists/5 Fold Cross-Val/fold5/',
-        'data/lists/Debug/']
+        'data/lists/Debug/',
+        'data/']
 
-BASE = LIST[6]
+BASE = LIST[7]
 TRAIN_DATA = BASE + 'train.csv'
 DEV_DATA = BASE + 'dev.csv'
 TEST_DATA = BASE + 'test.csv'
