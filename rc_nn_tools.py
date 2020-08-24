@@ -427,6 +427,161 @@ class NNTools:
         return None
 
 
+    def robust_test(self, testset, etype=1, edir="data/lists/Error/"):
+        """Mathod to Calculate Accuracy.
+        
+        This method runs the complete testing session producing accuracy in
+        different type of basis and produces a list for error predicted data.
+        
+        Args:
+            testset (pandas dataframe): Contains testing data.
+            etype (int): Error type marker to create error file for.
+            edir (diectory path): Directory path to create error file.
+
+        """
+        
+        testset = pd.read_csv(testset)
+        
+        # initialize data holder and result holder
+        count_0 = 0
+        count_1 = 0
+        count_2 = 0
+        count_3 = 0
+        content_0 = []
+        content_1 = []
+        content_2 = []
+        content_3 = []
+        for index in range(len(testset)):
+            
+            # parse data and make prediction
+            if self.type == "servo":
+                _,target,_ = self.parsedata.parse_data(testset["image"][index])
+                prediction =  self.predict(testset["image"][index])
+            else:
+                _,_,target = self.parsedata.parse_data(testset["image"][index])
+                prediction =  self.predict(testset["image"][index])
+            
+            # type 0
+            if abs(target - prediction) == 0:
+                count_0 += 1
+            else:
+                content_0.append(testset["image"][index])
+            
+            # type 1
+            if abs(target - prediction) <= 1:
+                count_1 += 1
+            else:
+                content_1.append(testset["image"][index])
+            
+            # accuracy test only for servo data
+            if self.type == "servo":
+                
+                # type 2
+                if target >= 17:
+                    if prediction >= 16:
+                        count_2 += 1
+                    else:
+                        content_2.append(testset["image"][index])
+                elif target <= 13:
+                    if prediction <= 14:
+                        count_2 += 1
+                    else:
+                        content_2.append(testset["image"][index])
+                else:
+                    if abs(target - prediction) <= 1:
+                        count_2 += 1        
+                    else:
+                        content_2.append(testset["image"][index])
+                
+                # type 3
+                if target == 15:
+                    if prediction != 15:
+                        count_3 += 1
+                    else:
+                        content_3.append(testset["image"][index])
+                elif target < 15:
+                    if prediction < 15:
+                        count_3 += 1
+                    else:
+                        content_3.append(testset["image"][index])
+                elif target > 15:
+                    if prediction > 15:
+                        count_3 += 1
+                    else:
+                        content_3.append(testset["image"][index])
+            
+            # print result for every 100 contents
+            if (index+1)%100 == 0:
+                if self.type == "servo":
+                    print('[{0: 5d}] servo: {1: 2.2f} {2: 2.2f} {3: 2.2f} {4: 2.2f}' \
+                          .format(index+1, 100*count_0/(index+1), \
+                                              100*count_1/(index+1), \
+                                                  100*count_2/(index+1), \
+                                                      100*count_3/(index+1)))
+                else:
+                    print('[{0: 5d}] motor: {1: 2.2f} {2: 2.2f}' \
+                          .format(index+1, 100*count_0/(index+1), \
+                                              100*count_1/(index+1)))
+        
+        # print final result
+        if self.type == "servo":
+            print("servo: {0: 2.2f} {1: 2.2f} {2: 2.2f} {3: 2.2f}" \
+                  .format(100*count_0/(index+1), 100*count_1/(index+1), \
+                          100*count_2/(index+1), 100*count_3/(index+1)))
+        else:
+            print("motor: {0: 2.2f} {1: 2.2f}" \
+                  .format(100*count_0/(index+1), 100*count_1/(index+1)))
+        
+        # checks and create output directories
+        if not os.path.exists(edir):
+            os.mkdir(edir)
+        
+        # create error file
+        if etype == 1:
+            content = content_1
+        elif etype == 2:
+            content = content_2
+        elif etype == 3:
+            content = content_3
+        else:
+            content = content_0
+        pd.DataFrame(content, columns =['image']).to_csv(edir+'error.csv', \
+                                                         index=False)
+        
+        return None
+    
+    
+    def time_count(self, testset):
+        """Mathod to Count Runtime.
+        
+        This method runs a testing session to count time to produce result from
+        neural network.
+        
+        Args:
+            testset (pandas dataframe): Contains testing data.
+
+        """
+        
+        testset = pd.read_csv(testset)
+        
+        # timer start
+        start = timeit.default_timer()
+        
+        # make prediction
+        for i in range(10):
+            for index in range(len(testset)):  
+                prediction =  self.predict(testset["image"][index])
+        
+        # timer stop
+        stop = timeit.default_timer()
+        
+        # calculate required time and display
+        time = 0.1*(stop-start)/(index+1)
+        print(time)
+        
+        return None
+
+
 #                                                                              
 # end of file
 """ANI717"""
