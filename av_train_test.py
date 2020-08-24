@@ -49,23 +49,33 @@ def main():
     # # pass a dummy input to GPU for alloting cache
     # torch.randn(717).cuda()
 
-    # servo training session:
-    servoTrain = NNTools(settings=SETTINGS, types=['servo','train'])
-    # servoTrain.load_model('models/servo_model.pth')
-    servoTrain.train(TRAIN_DATA, DEV_DATA)
+    # # servo training session:
+    # servoTrain = NNTools(settings=SETTINGS, types=['servo','train'])
+    # # servoTrain.load_model('models/servo_model.pth')
+    # servoTrain.train(TRAIN_DATA, DEV_DATA)
 
     # # servo testing session:
     # servoTest = NNTools(settings=SETTINGS, types=['servo','test'])
-    # servoTest.test(TEST_DATA, display=True)
+    # # servoTest.test(TEST_DATA, display=True)
+    # servoTest.robust_test(TEST_DATA, etype=1)
+    
+    # servo time count session:
+    servoTest = NNTools(settings=SETTINGS, types=['servo','test'])
+    servoTest.time_count("data/lists/Debug/time_100.csv")
 
     # # motor training session:
     # motorTrain = NNTools(settings=SETTINGS, types=['motor','train'])
-    # servoTrain.load_model('models/motor_model.pth')
+    # # servoTrain.load_model('models/motor_model.pth')
     # motorTrain.train(TRAIN_DATA, DEV_DATA)
 
     # # motor testing session:
     # motorTest = NNTools(settings=SETTINGS, types=['motor','test'])
-    # motorTest.test(TEST_DATA, display=True)
+    # # motorTest.test(TEST_DATA, display=True)
+    # motorTest.robust_test(TEST_DATA, etype=1)
+    
+    # # motor time count session:
+    # motorTest = NNTools(settings=SETTINGS, types=['motor','test'])
+    # motorTest.time_count("data/lists/Debug/time_100.csv")
 
     return None
 

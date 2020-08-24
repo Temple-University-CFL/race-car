@@ -28,8 +28,8 @@ QUIT_KEY = ord('q')
 SAVE_KEY = ord('s')
 
 """User has to provide here the path of image list and refined image list"""
-IMAGE_LIST = 'data/error.csv'
-REFINED_LIST = 'data/error_01.csv'
+IMAGE_LIST = 'data/lists/Error/error.csv'
+REFINED_LIST = 'data/lists/Error/error_01.csv'
 
 
 #___Main Method:

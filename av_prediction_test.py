@@ -27,7 +27,7 @@ SETTINGS = 'settings.json'
 QUIT_KEY = ord('q')
 
 """User has to provide here the path of image list for prediction"""
-IMAGE_LIST = 'data/error.csv'
+IMAGE_LIST = 'data/lists/Error/error.csv'
 
 
 #___Main Method:
