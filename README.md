@@ -29,7 +29,7 @@
 </p>
 
 
-[![Temple Race Car - Prediction on Captured Video](https://img.youtube.com/vi/https://youtu.be/yulaIIDh_K0/0.jpg)](https://www.youtube.com/watch?v=https://youtu.be/yulaIIDh_K0)
+[![Temple Race Car - Prediction on Captured Video](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video")
 
 
 <!-- TABLE OF CONTENTS -->
