@@ -17,6 +17,9 @@
   <h4 align="center">
     We are developing an End-to-end Learning Architecture for Autonomous Driving with Regression Model Approach
   </h4>
+  <h4 align="center">
+    The End-to-end Learning Architecture contains a stack of Convolutional Layers for Preprocessing and Feature Extraction from Images, followed by Fully Connected Layers on top. The whole architecture is defined as Convolutional Nueral Networks or ConvNets (CNN) in concurrent literatures.
+  </h4>
 </p>
 
 
