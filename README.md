@@ -20,12 +20,6 @@
 </p>
 
 
-[![Temple Race Car - Prediction on Captured Video (Youtube)](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video (Youtube)")
-.
-### Temple Race Car - Prediction on Captured Video (Youtube)
-
-
-
 ## Environment SetUp (Windows)
 * Install Anaconda (64 Bit, Python 3.7 version or higher)
 ```
@@ -56,6 +50,36 @@ Driver software to run training and testing sessions
 ```
 Driver software to test prediction visually
 ```
+
+### Supportive Tools
+
+* racecarNet.py
+```
+Contains the Deep Neural Network architecture 
+```
+* rc_nn_tools.py
+```
+Contains necessary tools to run training and testiong sessions
+```
+* rc_nn_utility.py
+```
+Contains utility tools for parsing and generating data in proper format to support deep learning sessions
+```
+* rc_data_handler.py
+```
+Contains required tools to prepare proper dataset for deep learning sessions
+```
+* rc_visualization.py
+```
+Contains tools to show performance visually
+```
+
+
+## Test Prediction
+[![Temple Race Car - Prediction on Captured Video (Youtube)](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video (Youtube)")
+.
+### Temple Race Car - Prediction on Captured Video (Youtube)
+
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
