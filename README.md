@@ -75,9 +75,8 @@ Contains tools to show performance visually
 ```
 
 
-## Test Prediction
+## Sample Prediction Test
 [![Temple Race Car - Prediction on Captured Video (Youtube)](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video (Youtube)")
-.
 ### Temple Race Car - Prediction on Captured Video (Youtube)
 
 
