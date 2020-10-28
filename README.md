@@ -20,9 +20,9 @@
 </p>
 
 
-[![Temple Race Car - Prediction on Captured Video](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video")
+[![Temple Race Car - Prediction on Captured Video (Youtube)](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video (Youtube)")
 
-Temple Race Car - Prediction on Captured Video
+Temple Race Car - Prediction on Captured Video (Youtube)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
