@@ -31,6 +31,7 @@
 
 [![Temple Race Car - Prediction on Captured Video](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video")
 
+Temple Race Car - Prediction on Captured Video
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
