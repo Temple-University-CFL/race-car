@@ -43,7 +43,7 @@ Creates CSV files contaning list of image directory paths for training, developm
 ```
 * av_refine_dataset.py
 ```
-Removes unwanted images with false annotation and refine dataset visually.
+Removes unwanted images with false annotation and refines dataset visually.
 ```
 * av_train_test.py
 ```
@@ -86,7 +86,7 @@ The image repository remains immutable during whole session.
 * data/lists/
 ```
 Contanis CSV files with lists of image directories for deep learning session. 
-Contains randomly shuffled image set along with 5 fold cross validation set for training and testing session.
+Contains randomly shuffled image set along with 5 fold cross validation set for deep learning sessions.
 ```
 * models/
 ```
