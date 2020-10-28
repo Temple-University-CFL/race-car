@@ -94,10 +94,10 @@ Contains .pth model files storing learned weights from deep learning sessions.
 ```
 
 ## Sample Prediction Test
-### Temple Race-car Project - Prediction on Captured Video 1
+### Prediction on Captured Video 1
 [![Temple Race-car Project - Prediction on Captured Video 1](http://img.youtube.com/vi/6__Wq2JxxDI/0.jpg)](http://www.youtube.com/watch?v=6__Wq2JxxDI "Temple Race-car Project - Prediction on Captured Video 1")
 
-### Temple Race-car Project - Prediction on Captured Video 2
+### Prediction on Captured Video 2
 [![Temple Race-car Project - Prediction on Captured Video 2](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race-car Project - Prediction on Captured Video 2")
 
 
