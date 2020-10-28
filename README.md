@@ -14,15 +14,49 @@
 
   <h1 align="center">Temple Race-car Project - Deep Learning Repository</h1>
 
-  <p align="center">
+  <h4 align="center">
     We are developing an End-to-end Learning Architecture for Autonomous Driving with Regression Model Approach
-  </p>
+  </h4>
 </p>
 
 
 [![Temple Race Car - Prediction on Captured Video (Youtube)](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video (Youtube)")
+.
+### Temple Race Car - Prediction on Captured Video (Youtube)
 
-Temple Race Car - Prediction on Captured Video (Youtube)
+
+
+## Environment SetUp (Windows)
+* Install Anaconda (64 Bit, Python 3.7 version or higher)
+```
+https://www.anaconda.com/products/individual
+```
+* Install OpenCV and Torch modules with Anaconda prompt.
+```
+pip install opencv-contrib-python
+conda install pytorch -c pytorch
+conda install torchvision -c pytorch
+```
+
+## Software Repository
+### Driver Softwares
+* av_create_dataset.py
+```
+Creates CSV files contaning list of image directory paths for training, development and testiong sessions.
+```
+* av_refine_dataset.py
+```
+Removes unwanted images with false annotation and refine dataset visually.
+```
+* av_train_test.py
+```
+Driver software to run training and testing sessions
+```
+* av_prediction_test.py
+```
+Driver software to test prediction visually
+```
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
