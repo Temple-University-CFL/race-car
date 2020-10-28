@@ -13,12 +13,9 @@
   </a>
 
   <h1 align="center">Temple Race-car Project - Deep Learning Repository</h1>
-
-  <h4 align="center">
-    We are developing an End-to-end Learning Architecture for Autonomous Driving with Regression Model Approach
-  </h4>
 </p>
 
+We are developing an End-to-end Learning Architecture for Autonomous Driving with Regression Model Approach. The End-to-end Learning Architecture contains a stack of Convolutional Layers for Preprocessing and Feature Extraction from Images, followed by Fully Connected Layers on top. The whole architecture is defined as Convolutional Nueral Networks or ConvNets (CNN) in concurrent literatures.
 
 ## Environment SetUp (Windows)
 * Install Anaconda (64 Bit, Python 3.7 version or higher)
