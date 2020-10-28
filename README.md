@@ -19,7 +19,7 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
 
 ## Colaborators
 (https://sites.temple.edu/cflab/people/)
-* Dr. Li bai
+* Dr. Li Bai
 * Animesh Bala Ani
 * Michael Nghe
 
