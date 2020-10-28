@@ -74,6 +74,21 @@ Contains required tools to prepare proper dataset for deep learning sessions
 Contains tools to show performance visually
 ```
 
+## Database
+* data/images/
+```
+Contains raw images collected in different environments and time period. 
+The image repository remains immutable during whole session.
+```
+* data/lists/
+```
+Contanis CSV files with lists of image directories for deep learning session. 
+Contains randomly shuffled image set along with 5 fold cross validation set for training and testing session.
+```
+* models/
+```
+Contains .pth model files storing learned weights from deep learning sessions.
+```
 
 ## Sample Prediction Test
 [![Temple Race Car - Prediction on Captured Video](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video")
