@@ -32,7 +32,7 @@ conda install pytorch -c pytorch
 conda install torchvision -c pytorch
 ```
 
-## Software Repository
+## Software Repository (Python/PyTorch/OpenCV)
 ### Driver Softwares
 * av_create_dataset.py
 ```
