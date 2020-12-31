@@ -37,19 +37,23 @@ conda install torchvision -c pytorch
 
 ## Software Repository (Python, OpenCV, PyTorch)
 ### Driver Softwares
-* av_create_dataset.py
+* refine_dataset.py
 ```
-Creates CSV files contaning list of image directory paths for training, development and testiong sessions.
+Creates and refines CSV files contaning list of image directory paths for training, development and testiong sessions.
 ```
-* av_refine_dataset.py
+* refine_visually.py
 ```
 Removes unwanted images with false annotation and refine dataset visually.
 ```
-* av_train_test.py
+* train.py
 ```
-Driver software to run training and testing sessions
+Driver software to run training sessions
 ```
-* av_prediction_test.py
+* test.py
+```
+Driver software to run testing sessions
+```
+* visualize_prediction.py
 ```
 Driver software to test prediction visually
 ```
@@ -60,19 +64,23 @@ Driver software to test prediction visually
 ```
 Contains the Deep Neural Network architecture 
 ```
-* rc_nn_tools.py
+* _train_test.py
 ```
 Contains necessary tools to run training and testiong sessions
 ```
-* rc_nn_utility.py
+* _parser.py
 ```
-Contains utility tools for parsing and generating data in proper format to support deep learning sessions
+Contains utility tools for parsing image and labels from directory path
 ```
-* rc_data_handler.py
+* _datagen.py
+```
+Contains utility tools for generating data in proper format to support deep learning sessions
+```
+* _data_handler.py
 ```
 Contains required tools to prepare proper dataset for deep learning sessions
 ```
-* rc_visualization.py
+* _visualization.py
 ```
 Contains tools to show performance visually
 ```
