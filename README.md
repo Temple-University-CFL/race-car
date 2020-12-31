@@ -14,85 +14,136 @@
 
   <h1 align="center">Temple Race-car Project - Deep Learning Repository</h1>
 
-  <h4 align="center">
+  <p align="center">
     We are developing an End-to-end Learning Architecture for Autonomous Driving with Regression Model Approach
-  </h4>
+    <br />
+    <a href="https://github.com/ani717/race-car"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/ani717/race-car">View Demo</a>
+    ·
+    <a href="https://github.com/ani717/race-car/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/ani717/race-car/issues">Request Feature</a>
+  </p>
 </p>
 
 
-## Environment SetUp (Windows)
-* Install Anaconda (64 Bit, Python 3.7 version or higher)
-```
-https://www.anaconda.com/products/individual
-```
-* Install OpenCV and Torch modules with Anaconda prompt.
-```
-pip install opencv-contrib-python
-conda install pytorch -c pytorch
-conda install torchvision -c pytorch
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+Here's a blank template to get started:
+**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
+`github_username`, `repo`, `twitter_handle`, `email`
+
+
+### Built With
+
+* []()
+* []()
+* []()
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+```sh
+npm install npm@latest -g
 ```
 
-## Software Repository (Python, OpenCV, PyTorch)
-### Driver Softwares
-* av_create_dataset.py
+### Installation
+ 
+1. Clone the repo
+```sh
+git clone https://github.com/github_username/repo.git
 ```
-Creates CSV files contaning list of image directory paths for training, development and testiong sessions.
-```
-* av_refine_dataset.py
-```
-Removes unwanted images with false annotation and refine dataset visually.
-```
-* av_train_test.py
-```
-Driver software to run training and testing sessions
-```
-* av_prediction_test.py
-```
-Driver software to test prediction visually
+2. Install NPM packages
+```sh
+npm install
 ```
 
-### Supportive Tools
 
-* racecarNet.py
-```
-Contains the Deep Neural Network architecture 
-```
-* rc_nn_tools.py
-```
-Contains necessary tools to run training and testiong sessions
-```
-* rc_nn_utility.py
-```
-Contains utility tools for parsing and generating data in proper format to support deep learning sessions
-```
-* rc_data_handler.py
-```
-Contains required tools to prepare proper dataset for deep learning sessions
-```
-* rc_visualization.py
-```
-Contains tools to show performance visually
-```
 
-## Database
-* data/images/
-```
-Contains raw images collected in different environments and time period. 
-The image repository remains immutable during whole session.
-```
-* data/lists/
-```
-Contanis CSV files with lists of image directories for deep learning session. 
-Contains randomly shuffled image set along with 5 fold cross validation set for training and testing session.
-```
-* models/
-```
-Contains .pth model files storing learned weights from deep learning sessions.
-```
+<!-- USAGE EXAMPLES -->
+## Usage
 
-## Sample Prediction Test
-[![Temple Race Car - Prediction on Captured Video](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race Car - Prediction on Captured Video")
-### Temple Race Car - Prediction on Captured Video
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+See the [open issues](https://github.com/github_username/repo/issues) for a list of proposed features (and known issues).
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+
+Project Link: [https://github.com/github_username/repo](https://github.com/github_username/repo)
+
+
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+
+* []()
+* []()
+* []()
+
+
 
 
 
