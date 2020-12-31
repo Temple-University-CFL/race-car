@@ -13,6 +13,7 @@
   </a>
 
   <h1 align="center">Temple Race-car Project - Deep Learning Repository</h1>
+<<<<<<< HEAD
 
   <p align="center">
     We are developing an End-to-end Learning Architecture for Autonomous Driving with Regression Model Approach
@@ -26,12 +27,42 @@
     ·
     <a href="https://github.com/ani717/race-car/issues">Request Feature</a>
   </p>
+=======
+>>>>>>> 5236f5fb256c2c969ee7f126550b5260134ac132
 </p>
 
+We are developing an End-to-end Learning Architecture for Autonomous Driving with Regression Model Approach. The End-to-end Learning Architecture contains a stack of Convolutional Layers for Preprocessing and Feature Extraction from Images, followed by Fully Connected Layers on top. The whole architecture is defined as Convolutional Nueral Networks or ConvNets (CNN) in concurrent literatures.
+
+## Colaborators
+(https://sites.temple.edu/cflab/people/)
+* Dr. Li Bai
+* Animesh Bala Ani
+* Michael Nghe
 
 
+<<<<<<< HEAD
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
+=======
+## Software Repository (Python, OpenCV, PyTorch)
+### Driver Softwares
+* av_create_dataset.py
+```
+Creates CSV files contaning list of image directory paths for training, development and testiong sessions.
+```
+* av_refine_dataset.py
+```
+Removes unwanted images with false annotation and refines dataset visually.
+```
+* av_train_test.py
+```
+Driver software to run training and testing sessions
+```
+* av_prediction_test.py
+```
+Driver software to test prediction visually
+```
+>>>>>>> 5236f5fb256c2c969ee7f126550b5260134ac132
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
@@ -46,6 +77,7 @@
 * [Acknowledgements](#acknowledgements)
 
 
+<<<<<<< HEAD
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -76,6 +108,18 @@ This is an example of how to list things you need to use the software and how to
 * npm
 ```sh
 npm install npm@latest -g
+=======
+## Database
+* data/images/
+```
+Contains raw images collected in different environments and time period. 
+The image repository remains immutable during whole session.
+```
+* data/lists/
+```
+Contanis CSV files with lists of image directories for deep learning session. 
+Contains randomly shuffled image set along with 5 fold cross validation set for deep learning sessions.
+>>>>>>> 5236f5fb256c2c969ee7f126550b5260134ac132
 ```
 
 ### Installation
@@ -89,6 +133,7 @@ git clone https://github.com/github_username/repo.git
 npm install
 ```
 
+<<<<<<< HEAD
 
 
 <!-- USAGE EXAMPLES -->
@@ -144,6 +189,14 @@ Project Link: [https://github.com/github_username/repo](https://github.com/githu
 * []()
 
 
+=======
+## Sample Prediction Test
+### Prediction on Captured Video 1
+[![Temple Race-car Project - Prediction on Captured Video 1](http://img.youtube.com/vi/6__Wq2JxxDI/0.jpg)](http://www.youtube.com/watch?v=6__Wq2JxxDI "Temple Race-car Project - Prediction on Captured Video 1")
+
+### Prediction on Captured Video 2
+[![Temple Race-car Project - Prediction on Captured Video 2](http://img.youtube.com/vi/yulaIIDh_K0/0.jpg)](http://www.youtube.com/watch?v=yulaIIDh_K0 "Temple Race-car Project - Prediction on Captured Video 2")
+>>>>>>> 5236f5fb256c2c969ee7f126550b5260134ac132
 
 
 
