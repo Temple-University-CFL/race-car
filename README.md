@@ -53,6 +53,10 @@ Driver software to run training sessions
 ```
 Driver software to run testing sessions
 ```
+* time_count.py
+```
+Driver software to calculate required time to make prediction on one image
+```
 * visualize_prediction.py
 ```
 Driver software to test prediction visually
