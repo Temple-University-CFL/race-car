@@ -36,7 +36,7 @@ conda install pytorch -c pytorch
 conda install torchvision -c pytorch
 ```
 
-### Raspberry Pi 4 (aarch64)
+### Raspberry Pi 4 (OS: raspios-buster-arm64)
 ```
 sudo apt update
 python3 -m pip install --upgrade pip
