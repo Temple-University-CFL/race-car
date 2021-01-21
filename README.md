@@ -53,6 +53,10 @@ Driver software to run training sessions
 ```
 Driver software to run testing sessions
 ```
+* time_count.py
+```
+Driver software to calculate required time to make prediction on one image
+```
 * visualize_prediction.py
 ```
 Driver software to test prediction visually
@@ -121,7 +125,7 @@ Contains .pth model files storing learned weights from deep learning sessions.
 [issues-shield]: https://img.shields.io/github/issues/ANI717/race-car.svg?style=flat-square
 [issues-url]: https://github.com/ANI717/race-car/issues
 [license-shield]: https://img.shields.io/github/license/ANI717/race-car.svg?style=flat-square
-[license-url]: https://github.com/ANI717/race-car/blob/master/LICENSE.txt
+[license-url]: https://github.com/ANI717/race-car/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/ani717
 [product-screenshot]: images/screenshot.png
