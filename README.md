@@ -23,7 +23,10 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
 * Animesh Bala Ani
 * Michael Nghe
 
-## Environment SetUp
+## Table of Contents  
+[Environment SetUp](#env) <br/>
+
+## Environment SetUp <a name="env"></a>
 ### Windows
 * Install Anaconda (64 Bit, Python 3.7 version or higher)
 ```
@@ -37,14 +40,16 @@ conda install torchvision -c pytorch
 ```
 
 ### Raspberry Pi 4 (OS: raspios-buster-arm64)
+Run following commands to install PyTorch, Torchvision, Pandas, Matplotlib and OpenCV.
+[Reference](https://github.com/ANI717/headless_raspberrypi_setup)
 ```
 sudo apt update
-python3 -m pip install --upgrade pip
-sudo apt install libopenblas-dev libblas-dev m4 cmake cython python3-yaml libatlas-base-dev
+sudo apt install libopenblas-dev libblas-dev m4 cmake cython python3-yaml libatlas-base-dev -y
 export ONNX_ML=1
 git clone --recursive https://github.com/pytorch/pytorch
 cd pytorch
 sudo -E python3 setup.py install
+python3 -m pip install --upgrade pip
 python3 -m pip install torchvision
 python3 -m pip install pandas
 python3 -m pip install --upgrade Pillow
