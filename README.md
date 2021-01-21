@@ -41,7 +41,6 @@ conda install torchvision -c pytorch
 
 ### Raspberry Pi 4 (OS: raspios-buster-arm64)
 Run following commands to install PyTorch, Torchvision, Pandas, Matplotlib and OpenCV.
-[Reference](https://github.com/ANI717/headless_raspberrypi_setup)
 ```
 sudo apt update
 sudo apt install libopenblas-dev libblas-dev m4 cmake cython python3-yaml libatlas-base-dev -y
@@ -56,6 +55,7 @@ python3 -m pip install --upgrade Pillow
 python3 -m pip install matplotlib
 python3 -m pip install opencv-contrib-python
 ```
+Or follow the instructions from [here](https://github.com/ANI717/headless_raspberrypi_setup) to setup everything from the beginning.
 
 ## Software Repository (Python, OpenCV, PyTorch)
 ### Driver Softwares
