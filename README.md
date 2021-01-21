@@ -23,7 +23,8 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
 * Animesh Bala Ani
 * Michael Nghe
 
-## Environment SetUp (Windows)
+## Environment SetUp
+### Windows
 * Install Anaconda (64 Bit, Python 3.7 version or higher)
 ```
 https://www.anaconda.com/products/individual
