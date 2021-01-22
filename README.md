@@ -62,35 +62,31 @@ Or follow the instructions from [here](https://github.com/ANI717/headless_raspbe
 
 ## Software Repository (Python, OpenCV, PyTorch) <a name="soft"></a>
 ### Driver Softwares
-```
-refine_dataset.py
-```
 Creates and refines CSV files contaning list of image directory paths.
 
 ```
-refine_visually.py
+refine_dataset.py
 ```
 Removes unwanted images with false annotation and refine dataset visually.
-
+```
+refine_visually.py
+```
+Driver software to run training sessions
 ```
 train.py
 ```
-Driver software to run training sessions
-
+Driver software to run testing sessions
 ```
 test.py
 ```
-Driver software to run testing sessions
-
+Driver software to calculate required time to make prediction on one image
 ```
 time_count.py
 ```
-Driver software to calculate required time to make prediction on one image
-
+Driver software to test prediction visually
 ```
 visualize_prediction.py
 ```
-Driver software to test prediction visually
 
 ### Supportive Tools
 
