@@ -25,7 +25,7 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
 
 ## Table of Contents  
 - [Environment SetUp](#env) <br/>
-* [Windows](#win) <br/>
+  * [Windows](#win) <br/>
 - [Software Repository](#soft) <br/>
 - [Database](#data) <br/>
 - [Sample Prediction Test](#sample) <br/>
