@@ -29,6 +29,7 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
   * [Raspberry Pi 4](#env-rasp) <br/>
 - [Software Repository](#soft) <br/>
   * [Driver Softwares](#soft-driver) <br/>
+  * [Neural Network](#soft-nn) <br/>
   * [Supportive Tools](#soft-tools) <br/>
 - [Database](#data) <br/>
 - [Sample Prediction Test](#sample) <br/>
@@ -91,11 +92,13 @@ time_count.py
 visualize_prediction.py
 ```
 
-### Supportive Tools <a name="soft-tools"></a>
+### Neural Network <a name="soft-nn"></a>
 * Contains the Deep Neural Network architecture
 ```
 racecarNet.py
 ```
+
+### Supportive Tools <a name="soft-tools"></a>
 * Contains necessary tools to run training and testiong sessions
 ```
 _train_test.py
