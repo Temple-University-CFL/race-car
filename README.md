@@ -114,19 +114,17 @@ _visualization.py
 ```
 
 ## Database <a name="data"></a>
-* data/images/
+* Contains raw images collected in different environments and time period. The image repository remains immutable during whole session.
 ```
-Contains raw images collected in different environments and time period. 
-The image repository remains immutable during whole session.
+data/images/
 ```
-* data/lists/
+* Contanis CSV files with lists of image directories for deep learning session. The lists contain randomly shuffled image set along with 5 fold cross validation set.
 ```
-Contanis CSV files with lists of image directories for deep learning session. 
-Contains randomly shuffled image set along with 5 fold cross validation set.
+data/lists/
 ```
-* models/
+* Contains .pth model files storing learned weights from deep learning sessions.
 ```
-Contains .pth model files storing learned weights from deep learning sessions.
+models/
 ```
 
 ## Sample Prediction Test <a name="sample"></a>
