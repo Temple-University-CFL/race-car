@@ -64,7 +64,7 @@ Or follow the instructions from [here](https://github.com/ANI717/headless_raspbe
 ### Driver Softwares
 * refine_dataset.py
 ```
-Creates and refines CSV files contaning list of image directory paths for training, development and testiong sessions.
+Creates and refines CSV files contaning list of image directory paths.
 ```
 * refine_visually.py
 ```
@@ -123,7 +123,7 @@ The image repository remains immutable during whole session.
 * data/lists/
 ```
 Contanis CSV files with lists of image directories for deep learning session. 
-Contains randomly shuffled image set along with 5 fold cross validation set for training and testing session.
+Contains randomly shuffled image set along with 5 fold cross validation set.
 ```
 * models/
 ```
