@@ -7,7 +7,7 @@
             "shape": [100, 100],
             "batch": 1024,
             "epoch": 500,
-           	"cuda": true
+           	"cuda": false
         },
 
         "test":
@@ -15,7 +15,7 @@
             "weights_path": "models/servo.pth",            
             "shape": [100, 100],
             "batch": 100,
-        	"cuda": true
+        	"cuda": false
         }
     },
 
@@ -26,7 +26,7 @@
             "shape": [50, 50],
             "batch": 1,
             "epoch": 100,
-           	"cuda": true
+           	"cuda": false
         },
 
         "test":
@@ -34,7 +34,7 @@
             "weights_path": "models/motor.pth",
             "shape": [50, 50],
             "batch": 10,
-        	"cuda": true
+        	"cuda": false
         }
     },
 
