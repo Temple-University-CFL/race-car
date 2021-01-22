@@ -25,13 +25,14 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
 
 ## Table of Contents  
 - [Environment SetUp](#env) <br/>
-  * [Windows](#win) <br/>
+  * [Windows](#env-win) <br/>
+  * [Raspberry Pi 4](#env-rasp) <br/>
 - [Software Repository](#soft) <br/>
 - [Database](#data) <br/>
 - [Sample Prediction Test](#sample) <br/>
 
 ## Environment SetUp <a name="env"></a>
-### Windows <a name="win"></a>
+### Windows <a name="env-win"></a>
 * Install Anaconda (64 Bit, Python 3.7 version or higher)
 ```
 https://www.anaconda.com/products/individual
@@ -43,7 +44,7 @@ conda install pytorch -c pytorch
 conda install torchvision -c pytorch
 ```
 
-### Raspberry Pi 4 (OS: raspios-buster-arm64)
+### Raspberry Pi 4 (OS: raspios-buster-arm64) <a name="env-rasp"></a>
 Run following commands to install PyTorch, Torchvision, Pandas, Matplotlib and OpenCV.
 ```
 sudo apt update
