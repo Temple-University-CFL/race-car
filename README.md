@@ -25,12 +25,13 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
 
 ## Table of Contents  
 [Environment SetUp](#env) <br/>
+  [Windows](#win) <br/>
 [Software Repository](#soft) <br/>
 [Database](#data) <br/>
 [Sample Prediction Test](#sample) <br/>
 
 ## Environment SetUp <a name="env"></a>
-### Windows
+### Windows <a name="win"></a>
 * Install Anaconda (64 Bit, Python 3.7 version or higher)
 ```
 https://www.anaconda.com/products/individual
