@@ -63,7 +63,6 @@ Or follow the instructions from [here](https://github.com/ANI717/headless_raspbe
 ## Software Repository (Python, OpenCV, PyTorch) <a name="soft"></a>
 ### Driver Softwares
 Creates and refines CSV files contaning list of image directory paths.
-
 ```
 refine_dataset.py
 ```
@@ -89,30 +88,29 @@ visualize_prediction.py
 ```
 
 ### Supportive Tools
-
-* racecarNet.py
+Contains the Deep Neural Network architecture
 ```
-Contains the Deep Neural Network architecture 
-```
-* _train_test.py
+racecarNet.py
 ```
 Contains necessary tools to run training and testiong sessions
 ```
-* _parser.py
+train_test.py
 ```
 Contains utility tools for parsing image and labels from directory path
 ```
-* _datagen.py
+_parser.py
 ```
 Contains utility tools for generating data in proper format to support deep learning sessions
 ```
-* _data_handler.py
+_datagen.py
 ```
 Contains required tools to prepare proper dataset for deep learning sessions
 ```
-* _visualization.py
+_data_handler.py
 ```
 Contains tools to show performance visually
+```
+_visualization.py
 ```
 
 ## Database <a name="data"></a>
