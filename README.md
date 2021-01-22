@@ -25,6 +25,9 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
 
 ## Table of Contents  
 [Environment SetUp](#env) <br/>
+[Software Repository](#soft) <br/>
+[Database](#data) <br/>
+[Sample Prediction Test](#sample) <br/>
 
 ## Environment SetUp <a name="env"></a>
 ### Windows
@@ -57,7 +60,7 @@ python3 -m pip install opencv-contrib-python
 ```
 Or follow the instructions from [here](https://github.com/ANI717/headless_raspberrypi_setup) to setup everything from the beginning.
 
-## Software Repository (Python, OpenCV, PyTorch)
+## Software Repository (Python, OpenCV, PyTorch) <a name="soft"></a>
 ### Driver Softwares
 * refine_dataset.py
 ```
@@ -111,7 +114,7 @@ Contains required tools to prepare proper dataset for deep learning sessions
 Contains tools to show performance visually
 ```
 
-## Database
+## Database <a name="data"></a>
 * data/images/
 ```
 Contains raw images collected in different environments and time period. 
@@ -127,7 +130,7 @@ Contains randomly shuffled image set along with 5 fold cross validation set for 
 Contains .pth model files storing learned weights from deep learning sessions.
 ```
 
-## Sample Prediction Test
+## Sample Prediction Test <a name="sample"></a>
 ### Prediction on Captured Video 1
 [![Temple Race-car Project - Prediction on Captured Video 1](http://img.youtube.com/vi/6__Wq2JxxDI/0.jpg)](http://www.youtube.com/watch?v=6__Wq2JxxDI "Temple Race-car Project - Prediction on Captured Video 1")
 
