@@ -98,7 +98,7 @@ racecarNet.py
 ```
 * Contains necessary tools to run training and testiong sessions
 ```
-train_test.py
+_train_test.py
 ```
 * Contains utility tools for parsing image and labels from directory path
 ```
