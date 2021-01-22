@@ -18,7 +18,7 @@
 We are developing an End-to-end Learning Architecture for Autonomous Driving with Regression Model Approach. The End-to-end Learning Architecture contains a stack of Convolutional Layers for Preprocessing and Feature Extraction from Images, followed by Fully Connected Layers on top. The whole architecture is defined as Convolutional Nueral Networks or ConvNets (CNN) in concurrent literatures.
 
 ## Colaborators
-[Computer Fusion Laboratory (CFL)](https://sites.temple.edu/cflab/people/)
+[Computer Fusion Laboratory (CFL), Temple University College of Engineering](https://sites.temple.edu/cflab/people/)
 * Dr. Li Bai
 * Animesh Bala Ani
 * Michael Nghe
