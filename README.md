@@ -62,53 +62,53 @@ Or follow the instructions from [here](https://github.com/ANI717/headless_raspbe
 
 ## Software Repository (Python, OpenCV, PyTorch) <a name="soft"></a>
 ### Driver Softwares
-Creates and refines CSV files contaning list of image directory paths.
+* Creates and refines CSV files contaning list of image directory paths.
 ```
 refine_dataset.py
 ```
-Removes unwanted images with false annotation and refine dataset visually.
+* Removes unwanted images with false annotation and refine dataset visually.
 ```
 refine_visually.py
 ```
-Driver software to run training sessions
+* Driver software to run training sessions
 ```
 train.py
 ```
-Driver software to run testing sessions
+* Driver software to run testing sessions
 ```
 test.py
 ```
-Driver software to calculate required time to make prediction on one image
+* Driver software to calculate required time to make prediction on one image
 ```
 time_count.py
 ```
-Driver software to test prediction visually
+* Driver software to test prediction visually
 ```
 visualize_prediction.py
 ```
 
 ### Supportive Tools
-Contains the Deep Neural Network architecture
+* Contains the Deep Neural Network architecture
 ```
 racecarNet.py
 ```
-Contains necessary tools to run training and testiong sessions
+* Contains necessary tools to run training and testiong sessions
 ```
 train_test.py
 ```
-Contains utility tools for parsing image and labels from directory path
+* Contains utility tools for parsing image and labels from directory path
 ```
 _parser.py
 ```
-Contains utility tools for generating data in proper format to support deep learning sessions
+* Contains utility tools for generating data in proper format to support deep learning sessions
 ```
 _datagen.py
 ```
-Contains required tools to prepare proper dataset for deep learning sessions
+* Contains required tools to prepare proper dataset for deep learning sessions
 ```
 _data_handler.py
 ```
-Contains tools to show performance visually
+* Contains tools to show performance visually
 ```
 _visualization.py
 ```
