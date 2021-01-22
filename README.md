@@ -19,9 +19,9 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
 
 ## Colaborators
 [Computer Fusion Laboratory (CFL) - Temple University College of Engineering](https://sites.temple.edu/cflab/people/)
-* Dr. Li Bai
-* Animesh Bala Ani
-* Michael Nghe
+* [Dr. Li Bai](https://engineering.temple.edu/about/faculty-staff/li-bai-lbai)
+* [Animesh Bala Ani](animeshani.com)
+* [Michael Nghe](https://sites.temple.edu/cflab/people/)
 
 ## Table of Contents  
 - [Environment SetUp](#env) <br/>
