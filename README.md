@@ -28,6 +28,8 @@ We are developing an End-to-end Learning Architecture for Autonomous Driving wit
   * [Windows](#env-win) <br/>
   * [Raspberry Pi 4](#env-rasp) <br/>
 - [Software Repository](#soft) <br/>
+  * [Driver Softwares](#soft-driver) <br/>
+  * [Supportive Tools](#soft-tools) <br/>
 - [Database](#data) <br/>
 - [Sample Prediction Test](#sample) <br/>
 
@@ -63,7 +65,7 @@ python3 -m pip install opencv-contrib-python
 Or follow the instructions from [here](https://github.com/ANI717/headless_raspberrypi_setup) to setup everything from the beginning.
 
 ## Software Repository (Python, OpenCV, PyTorch) <a name="soft"></a>
-### Driver Softwares
+### Driver Softwares <a name="soft-driver"></a>
 * Creates and refines CSV files contaning list of image directory paths.
 ```
 refine_dataset.py
@@ -89,7 +91,7 @@ time_count.py
 visualize_prediction.py
 ```
 
-### Supportive Tools
+### Supportive Tools <a name="soft-tools"></a>
 * Contains the Deep Neural Network architecture
 ```
 racecarNet.py
